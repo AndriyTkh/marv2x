@@ -2,85 +2,71 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import css from './Header.module.css';
-import Modal from './MobileMain';
+import { usePathname } from 'next/navigation';
+import styles from './Header.module.css';
 
-const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
-  const openMenu = () => setIsMenuOpen(true);
-  const closeMenu = () => setIsMenuOpen(false);
+  const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/products', label: 'Products' },
+    { href: '/history/company', label: 'History' },
+    { href: '/contacts', label: 'Contacts' },
+  ];
+
+  const handleLinkClick = () => {
+    setMobileMenuOpen(false);
+  };
 
   return (
-    <>
-      <header className={css.header}>
-        <div className={css.logo}>
-          <Link href="/">
-            <svg width={23} height={23} aria-hidden="true">
-              <use href="/icon.svg#icon-plant" />
-            </svg>
-          </Link>
-          <span className={css.title}>Marv2X</span>
-        </div>
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <Link href="/" className={styles.logo}>
+          🌿 EcoMeasure
+        </Link>
 
-        <nav className={css.desktopNav} aria-label="Main Navigation">
-          <ul className={css.navigation}>
-            <li>
-              <Link href="/" className={css.navLink}>
-                Hub
-              </Link>
-            </li>
-            <li>
-              <a href="#stories" className={css.navLink}>
-                Історії
-              </a>
-            </li>
-            <li>
-              <a href="#travelers" className={css.navLink}>
-                Мандрівники
-              </a>
-            </li>
-          </ul>
+        {/* Desktop Navigation */}
+        <nav className={styles.nav}>
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={pathname === link.href ? styles.active : ''}
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
-        <button type="button" className={css.burger} aria-label="Open menu" onClick={openMenu}>
-          <svg width={24} height={24} aria-hidden="true" fill="#FFFFFF">
-            <use href="/icon.svg#icon-menu" />
-          </svg>
+        {/* Mobile Menu Button */}
+        <button
+          className={`${styles.mobileMenuBtn} ${mobileMenuOpen ? styles.active : ''}`}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle mobile menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
-      </header>
+      </div>
 
-      {isMenuOpen && (
-        <Modal onClose={closeMenu}>
-          <div className={css.mobilelogo}>
-            <Link href="/">
-              <svg width={23} height={23} aria-hidden="true">
-                <use href="/icon.svg#icon-plant" />
-              </svg>
+      {/* Mobile Navigation */}
+      {mobileMenuOpen && (
+        <nav className={styles.mobileNav}>
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={pathname === link.href ? styles.active : ''}
+              onClick={handleLinkClick}
+            >
+              {link.label}
             </Link>
-            <span className={css.mobileTitle}>Подорожники</span>
-          </div>
-          <ul className={css.mobileNavigation}>
-            <li>
-              <Link href="/" onClick={closeMenu} className={css.mobileItem}>
-                Головна
-              </Link>
-            </li>
-            <li>
-              <a href="#stories" onClick={closeMenu} className={css.mobileItem}>
-                Історії
-              </a>
-            </li>
-            <li>
-              <a href="#travelers" onClick={closeMenu} className={css.mobileItem}>
-                Мандрівники
-              </a>
-            </li>
-          </ul>
-        </Modal>
+          ))}
+        </nav>
       )}
-    </>
+    </header>
   );
-};
-
-export default Header;
+}
