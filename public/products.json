@@ -1,0 +1,72 @@
+[
+  {
+    "id": "eco-sensor-100",
+    "name": "Eco Sensor 100",
+    "image": "/hero-cycle/stock-0.jpg",
+    "description": "A compact, entry-level environmental sensor used for monitoring temperature, humidity, and particulate concentration in small indoor environments.",
+    "characteristics": {
+      "weight": "320g",
+      "batteryLife": "48 hours",
+      "connectivity": "Bluetooth LE, USB-C",
+      "precision": "±1% RH, ±0.2°C",
+      "material": "Reinforced polymer shell"
+    },
+    "price": 129.99
+  },
+  {
+    "id": "air-quality-pro",
+    "name": "Air Quality Pro",
+    "image": "/hero-cycle/stock-1.jpg",
+    "description": "High-accuracy air quality station capable of measuring CO₂, PM2.5, PM10, VOCs, and atmospheric pressure. Designed for laboratories and industrial use.",
+    "characteristics": {
+      "weight": "780g",
+      "batteryLife": "72 hours",
+      "connectivity": "Wi-Fi, USB-C",
+      "precision": "±0.5% CO₂, ±1 μg/m³ PM2.5",
+      "material": "Aluminum composite frame"
+    },
+    "price": 349.0
+  },
+  {
+    "id": "aqua-monitor-lite",
+    "name": "Aqua Monitor Lite",
+    "image": "/hero-cycle/stock-2.jpg",
+    "description": "Portable water-quality analyzer used to measure pH, turbidity, dissolved oxygen, and salinity in field conditions.",
+    "characteristics": {
+      "weight": "430g",
+      "batteryLife": "60 hours",
+      "connectivity": "USB-C",
+      "precision": "±0.01 pH, ±0.5% salinity",
+      "material": "Waterproof polymer IP67"
+    },
+    "price": 259.5
+  },
+  {
+    "id": "climate-node-x",
+    "name": "Climate Node X",
+    "image": "/hero-cycle/stock-3.jpg",
+    "description": "Advanced climate station for long-term environmental measurement, featuring modular sensor attachments and 3D visualization support.",
+    "characteristics": {
+      "weight": "1.2kg",
+      "batteryLife": "96 hours",
+      "connectivity": "Wi-Fi, Ethernet, USB-C",
+      "precision": "±0.1°C, ±0.8% RH",
+      "material": "Aircraft-grade aluminum"
+    },
+    "price": 579.0
+  },
+  {
+    "id": "geo-scan-3d",
+    "name": "Geo Scan 3D",
+    "image": "/hero-cycle/stock-4.jpg",
+    "description": "A rugged 3D environmental scanner designed for terrain mapping, structural inspections, and industrial measurements.",
+    "characteristics": {
+      "weight": "1.6kg",
+      "batteryLife": "120 hours",
+      "connectivity": "Wi-Fi, USB-C",
+      "precision": "Sub-mm structural scan accuracy",
+      "material": "Reinforced magnesium housing"
+    },
+    "price": 899.0
+  }
+]
