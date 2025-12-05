@@ -19,14 +19,20 @@
 }
 
 .imageWrapper {
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100%;
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+}
+.imageWrapper.hidden {
+  opacity: 0;
 }
 
 .backgroundImage {
   object-fit: cover;
   object-position: center;
+  z-index: 1;
   animation: fadeInImage var(--transition-medium) ease-in-out forwards;
 }
 

@@ -19,7 +19,9 @@ export default function Hero() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+      setCurrentImageIndex((prev) => {
+        return (prev + 1) % images.length;
+      });
     }, 5000); // Change image every 5 seconds
 
     return () => clearInterval(interval);
@@ -29,21 +31,23 @@ export default function Hero() {
     <section className={styles.hero}>
       {/* Background Image with Overlay */}
       <div className={styles.backgroundContainer}>
-        {images.map((image, index) => (
-          <div
-            key={image}
-            className={`${styles.imageWrapper} ${index === currentImageIndex ? styles.active : ''}`}
-          >
-            <Image
-              src={image}
-              alt="Environmental monitoring"
-              fill
-              priority={index === currentImageIndex}
-              quality={85}
-              className={styles.backgroundImage}
-            />
-          </div>
-        ))}
+        {images.map((image, index) => {
+          return (
+            <div
+              key={image}
+              className={`${styles.imageWrapper} ${index !== currentImageIndex ? styles.hidden : ''}`}
+            >
+              <Image
+                src={image}
+                alt="Environmental monitoring"
+                fill
+                priority={index === currentImageIndex}
+                quality={85}
+                className={`${styles.backgroundImage}`}
+              />
+            </div>
+          );
+        })}
         <div className={styles.overlay} />
       </div>
 
