@@ -42,7 +42,7 @@ export default function Hero() {
                 alt="Environmental monitoring"
                 fill
                 priority={index === currentImageIndex}
-                quality={85}
+                quality={75}
                 className={`${styles.backgroundImage}`}
               />
             </div>

@@ -22,7 +22,7 @@ body {
 :root {
   /* Color palette */
   --black: rgb(0, 0, 0);
-  --muted-teal: #839788ff;
+  --muted-teal: rgb(56, 95, 66);
   --champagne-mist: rgb(252, 251, 251);
   --khaki-beige: #baa898ff;
   --pale-sky: #bfd7eaff;
@@ -34,7 +34,7 @@ body {
   /* Spacing scale */
   --sp-1: 0.25rem;
   --sp-2: 0.5rem;
-  --sp-3: 1rem;
+  --sp-3: 0.8rem;
   --sp-4: 1.5rem;
   --sp-5: 2rem;
   --sp-6: 3rem;
