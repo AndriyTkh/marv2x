@@ -29,9 +29,9 @@ const Footer: React.FC = () => {
     },
   ];
 
-  const legalLinks = [
-    { label: 'Privacy Policy', path: '/privacy' },
-    { label: 'Terms of Service', path: '/terms' },
+  const legalLinks: Array<{ label: string; href: string }> = [
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms of Service', href: '/terms' },
   ];
 
   const companyInfo = {
@@ -91,7 +91,7 @@ const Footer: React.FC = () => {
             <h3 className={styles.columnTitle}>Legal</h3>
             <nav className={styles.nav}>
               {legalLinks.map((link) => (
-                <Link key={link.label} href={link.path as any}>
+                <Link key={link.label} href={link.href as any}>
                   {link.label}
                 </Link>
               ))}
