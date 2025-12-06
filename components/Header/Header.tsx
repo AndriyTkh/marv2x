@@ -14,7 +14,7 @@ export default function Header() {
     { href: '/products', label: 'Products' },
     { href: '/history/company', label: 'History' },
     { href: '/contacts', label: 'Contacts' },
-  ];
+  ] as const;
 
   const handleLinkClick = () => {
     setMobileMenuOpen(false);

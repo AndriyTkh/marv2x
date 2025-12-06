@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
     { label: 'Privacy Policy', path: '/privacy' },
     { label: 'Terms of Service', path: '/terms' },
   ];
-  
+
   const companyInfo = {
     email: 'info@ecomeasure.com',
     phone: '+1 (555) 123-4567',
@@ -78,8 +78,7 @@ const Footer: React.FC = () => {
                 <a href={`mailto:${companyInfo.email}`}>{companyInfo.email}</a>
               </p>
               <p>
-                <strong>Phone:</strong>{' '}
-                <a href={`tel:${companyInfo.phone}`}>{companyInfo.phone}</a>
+                <strong>Phone:</strong> <a href={`tel:${companyInfo.phone}`}>{companyInfo.phone}</a>
               </p>
               <p>
                 <strong>Address:</strong> {companyInfo.address}
@@ -92,7 +91,7 @@ const Footer: React.FC = () => {
             <h3 className={styles.columnTitle}>Legal</h3>
             <nav className={styles.nav}>
               {legalLinks.map((link) => (
-                <Link key={link.label} href={link.path}>
+                <Link key={link.label} href={link.path as any}>
                   {link.label}
                 </Link>
               ))}
@@ -103,9 +102,7 @@ const Footer: React.FC = () => {
         <hr className={styles.line} />
 
         {/* Copyright */}
-        <p className={styles.copy}>
-          © {year} EcoMeasure. All rights reserved.
-        </p>
+        <p className={styles.copy}>© {year} EcoMeasure. All rights reserved.</p>
       </div>
     </footer>
   );
