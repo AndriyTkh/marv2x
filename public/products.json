@@ -1,72 +1,101 @@
 [
   {
-    "id": "eco-sensor-100",
-    "name": "Eco Sensor 100",
-    "image": "/hero-cycle/stock-0.jpg",
-    "description": "A compact, entry-level environmental sensor used for monitoring temperature, humidity, and particulate concentration in small indoor environments.",
-    "characteristics": {
-      "weight": "320g",
-      "batteryLife": "48 hours",
-      "connectivity": "Bluetooth LE, USB-C",
-      "precision": "±1% RH, ±0.2°C",
-      "material": "Reinforced polymer shell"
-    },
-    "price": 129.99
+    "id": "marv-2ex",
+    "name": "MARV 2EX",
+    "shortDescription": "Extractive dust monitoring system for wet gases in explosive atmospheres (ATEX Zone 1/2).",
+    "longDescription": "The MARV 2EX is designed for continuous measurement of dust concentration in industrial processes saturated with moisture, such as after wet scrubbers or in condensing environments. It provides isokinetic sampling, accurate linear measurement, and constant dust level monitoring up to 0.1 mg/m³. The system features PLC and HMI visualization for easy parameterization and complies with legally regulated measuring instruments (Certificate No. UA.TR.001 46-19).",
+    "features": [
+      "Isokinetic sampling under variable flow conditions",
+      "Constant dust level measurement up to 0.1 mg/m³",
+      "Dust filter with automatic back-purge",
+      "Accurate linear measurement for all types of dust",
+      "PLC visualization software and HMI (local and web)"
+    ],
+    "applications": [
+      {
+        "process": "BFG (Blast Furnace Gas)",
+        "description": "Measures dust concentration before reuse of gas in a boiler or gas turbine.",
+        "conditions": {
+          "temperature": "80°C",
+          "humidity": "100%"
+        }
+      },
+      {
+        "process": "BOF (Basic Oxygen Furnace)",
+        "description": "Monitors dust emissions after wet scrubber cleaning or before reuse of converter gas in a boiler.",
+        "conditions": {
+          "temperature": "70°C",
+          "pressure": "0.95-1.023 Bar Abs.",
+          "gasVelocity": "5-30 m/s",
+          "humidity": "100%"
+        }
+      }
+    ],
+    "certifications": ["ATEX Zone 1/2", "Certificate No. UA.TR.001 46-19"],
+    "imageUrls": ["/hero-cycle/stock-0.jpg", "/hero-cycle/stock-1.jpg"],
+    "price": ""
   },
   {
-    "id": "air-quality-pro",
-    "name": "Air Quality Pro",
-    "image": "/hero-cycle/stock-1.jpg",
-    "description": "High-accuracy air quality station capable of measuring CO₂, PM2.5, PM10, VOCs, and atmospheric pressure. Designed for laboratories and industrial use.",
-    "characteristics": {
-      "weight": "780g",
-      "batteryLife": "72 hours",
-      "connectivity": "Wi-Fi, USB-C",
-      "precision": "±0.5% CO₂, ±1 μg/m³ PM2.5",
-      "material": "Aluminum composite frame"
-    },
-    "price": 349.0
+    "id": "product-2",
+    "name": "Industrial Sensor X1",
+    "shortDescription": "Multi-purpose industrial sensor for temperature and humidity monitoring.",
+    "longDescription": "The Industrial Sensor X1 provides reliable measurements for industrial applications. It is designed for continuous monitoring and supports data integration with PLCs and SCADA systems.",
+    "features": [
+      "High-accuracy temperature and humidity sensing",
+      "Continuous monitoring",
+      "Easy integration with control systems",
+      "Rugged industrial design"
+    ],
+    "applications": [
+      {
+        "process": "Factory Automation",
+        "description": "Monitor environmental conditions in production facilities."
+      }
+    ],
+    "certifications": ["CE Certified", "RoHS Compliant"],
+    "imageUrls": ["/hero-cycle/stock-2.jpg", "/hero-cycle/stock-3.jpg"],
+    "price": ""
   },
   {
-    "id": "aqua-monitor-lite",
-    "name": "Aqua Monitor Lite",
-    "image": "/hero-cycle/stock-2.jpg",
-    "description": "Portable water-quality analyzer used to measure pH, turbidity, dissolved oxygen, and salinity in field conditions.",
-    "characteristics": {
-      "weight": "430g",
-      "batteryLife": "60 hours",
-      "connectivity": "USB-C",
-      "precision": "±0.01 pH, ±0.5% salinity",
-      "material": "Waterproof polymer IP67"
-    },
-    "price": 259.5
+    "id": "product-3",
+    "name": "Gas Flow Meter G3",
+    "shortDescription": "Precision gas flow meter for industrial process control.",
+    "longDescription": "The Gas Flow Meter G3 ensures precise flow measurements for a variety of gases. It is suitable for both high and low-pressure applications.",
+    "features": [
+      "Accurate flow measurement",
+      "Supports multiple gas types",
+      "Digital output compatible with PLCs",
+      "Compact and durable design"
+    ],
+    "applications": [
+      {
+        "process": "Chemical Processing",
+        "description": "Monitor and control gas flows in chemical reactors and pipelines."
+      }
+    ],
+    "certifications": ["ISO 9001", "CE Certified"],
+    "imageUrls": ["/hero-cycle/stock-1.jpg", "/hero-cycle/stock-4.jpg"],
+    "price": ""
   },
   {
-    "id": "climate-node-x",
-    "name": "Climate Node X",
-    "image": "/hero-cycle/stock-3.jpg",
-    "description": "Advanced climate station for long-term environmental measurement, featuring modular sensor attachments and 3D visualization support.",
-    "characteristics": {
-      "weight": "1.2kg",
-      "batteryLife": "96 hours",
-      "connectivity": "Wi-Fi, Ethernet, USB-C",
-      "precision": "±0.1°C, ±0.8% RH",
-      "material": "Aircraft-grade aluminum"
-    },
-    "price": 579.0
-  },
-  {
-    "id": "geo-scan-3d",
-    "name": "Geo Scan 3D",
-    "image": "/hero-cycle/stock-4.jpg",
-    "description": "A rugged 3D environmental scanner designed for terrain mapping, structural inspections, and industrial measurements.",
-    "characteristics": {
-      "weight": "1.6kg",
-      "batteryLife": "120 hours",
-      "connectivity": "Wi-Fi, USB-C",
-      "precision": "Sub-mm structural scan accuracy",
-      "material": "Reinforced magnesium housing"
-    },
-    "price": 899.0
+    "id": "product-4",
+    "name": "Optical Particle Monitor OPM-5",
+    "shortDescription": "High-sensitivity particle monitor for industrial environments.",
+    "longDescription": "The OPM-5 provides real-time monitoring of airborne particles. It is ideal for clean rooms, laboratories, and industrial facilities where dust control is critical.",
+    "features": [
+      "Real-time particle monitoring",
+      "High sensitivity and low detection limits",
+      "Data logging and reporting",
+      "Durable and easy to install"
+    ],
+    "applications": [
+      {
+        "process": "Air Quality Monitoring",
+        "description": "Measure and report airborne particle concentrations in controlled environments."
+      }
+    ],
+    "certifications": ["CE Certified", "ISO 14644 Compliant"],
+    "imageUrls": ["/hero-cycle/stock-3.jpg", "/hero-cycle/stock-0.jpg"],
+    "price": ""
   }
 ]

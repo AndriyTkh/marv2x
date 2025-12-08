@@ -25,23 +25,17 @@ export default function ProductList({
         {(title || description) && (
           <div className={styles.header}>
             {title && <h2 className={styles.title}>{title}</h2>}
-            {description && (
-              <p className={styles.description}>{description}</p>
-            )}
+            {description && <p className={styles.description}>{description}</p>}
           </div>
         )}
 
         {/* Products Grid */}
         <div className={styles.grid}>
           {displayProducts.map((product) => (
-            <Link
-              key={product.id}
-              href={`/products/${product.id}`}
-              className={styles.productCard}
-            >
+            <Link key={product.id} href={`/products/${product.id}`} className={styles.productCard}>
               <div className={styles.imageWrapper}>
                 <Image
-                  src={product.image}
+                  src={product.imageUrls[0] || '/hero-cycle/stock-0.jpg'}
                   alt={product.name}
                   fill
                   className={styles.image}
@@ -50,13 +44,9 @@ export default function ProductList({
               </div>
               <div className={styles.content}>
                 <h3 className={styles.productName}>{product.name}</h3>
-                <p className={styles.productDescription}>
-                  {product.description}
-                </p>
+                <p className={styles.productDescription}>{product.shortDescription}</p>
                 <div className={styles.footer}>
-                  <span className={styles.price}>
-                    ${product.price.toFixed(2)}
-                  </span>
+                  {product.price && <span className={styles.price}>{product.price}</span>}
                   <span className={styles.arrow}>→</span>
                 </div>
               </div>

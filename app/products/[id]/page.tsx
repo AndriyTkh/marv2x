@@ -12,11 +12,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const product = products.find((p) => p.id === id);
 
@@ -24,16 +20,12 @@ export async function generateMetadata({
 
   return {
     title: `${product.name} | MARV2X`,
-    description: product.description,
-    keywords: `${product.name}, environmental sensor, measurement device`,
+    description: product.shortDescription,
+    keywords: `${product.name}, ${product.certifications.join(', ')}, environmental sensor, measurement device`,
   };
 }
 
-export default async function ProductPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const product = products.find((p) => p.id === id) as Product | undefined;
 
@@ -41,9 +33,7 @@ export default async function ProductPage({
     notFound();
   }
 
-  const relatedProducts = products
-    .filter((p) => p.id !== product.id)
-    .slice(0, 3);
+  const relatedProducts = products.filter((p) => p.id !== product.id).slice(0, 3);
 
   return (
     <main className={styles.main}>
@@ -58,7 +48,7 @@ export default async function ProductPage({
           {/* Product Image */}
           <div className={styles.imageContainer}>
             <Image
-              src={product.image}
+              src={product.imageUrls[0] || '/hero-cycle/stock-0.jpg'}
               alt={product.name}
               fill
               priority
@@ -69,36 +59,77 @@ export default async function ProductPage({
           {/* Product Info */}
           <div className={styles.infoContainer}>
             <h1 className={styles.title}>{product.name}</h1>
-            <p className={styles.description}>{product.description}</p>
+            <p className={styles.description}>{product.longDescription}</p>
 
             {/* Price */}
-            <div className={styles.priceSection}>
-              <span className={styles.price}>${product.price.toFixed(2)}</span>
-            </div>
+            {product.price && (
+              <div className={styles.priceSection}>
+                <span className={styles.price}>{product.price}</span>
+              </div>
+            )}
 
             {/* CTA Button */}
             <Link href="/contacts" className={styles.ctaButton}>
               Request a Quote
             </Link>
 
-            {/* Characteristics */}
-            <div className={styles.characteristics}>
-              <h2 className={styles.charTitle}>Specifications</h2>
-              <div className={styles.charGrid}>
-                {Object.entries(product.characteristics).map(
-                  ([key, value]) => (
-                    <div key={key} className={styles.charItem}>
-                      <dt className={styles.charLabel}>
-                        {key
-                          .replace(/([A-Z])/g, ' $1')
-                          .replace(/^./, (str) => str.toUpperCase())}
-                      </dt>
-                      <dd className={styles.charValue}>{value}</dd>
-                    </div>
-                  )
-                )}
+            {/* Features */}
+            {product.features && product.features.length > 0 && (
+              <div className={styles.characteristics}>
+                <h2 className={styles.charTitle}>Key Features</h2>
+                <ul className={styles.featureList}>
+                  {product.features.map((feature, index) => (
+                    <li key={index} className={styles.featureItem}>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
+            )}
+
+            {/* Applications */}
+            {product.applications && product.applications.length > 0 && (
+              <div className={styles.characteristics}>
+                <h2 className={styles.charTitle}>Applications</h2>
+                <div className={styles.applicationsList}>
+                  {product.applications.map((app, index) => (
+                    <div key={index} className={styles.applicationItem}>
+                      <h3 className={styles.applicationProcess}>{app.process}</h3>
+                      <p className={styles.applicationDescription}>{app.description}</p>
+                      {'conditions' in app && app.conditions && (
+                        <div className={styles.conditions}>
+                          <strong>Conditions:</strong>
+                          <ul className={styles.conditionsList}>
+                            {Object.entries(app.conditions).map(([key, value]) => (
+                              <li key={key}>
+                                {key
+                                  .replace(/([A-Z])/g, ' $1')
+                                  .replace(/^./, (str) => str.toUpperCase())}
+                                : {String(value)}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Certifications */}
+            {product.certifications && product.certifications.length > 0 && (
+              <div className={styles.characteristics}>
+                <h2 className={styles.charTitle}>Certifications</h2>
+                <div className={styles.certificationsList}>
+                  {product.certifications.map((cert, index) => (
+                    <span key={index} className={styles.certificationBadge}>
+                      {cert}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
@@ -115,7 +146,7 @@ export default async function ProductPage({
                 >
                   <div className={styles.relatedImageWrapper}>
                     <Image
-                      src={relatedProduct.image}
+                      src={relatedProduct.imageUrls[0] || '/hero-cycle/stock-0.jpg'}
                       alt={relatedProduct.name}
                       fill
                       className={styles.relatedImage}
@@ -123,9 +154,9 @@ export default async function ProductPage({
                     />
                   </div>
                   <h3 className={styles.relatedName}>{relatedProduct.name}</h3>
-                  <p className={styles.relatedPrice}>
-                    ${relatedProduct.price.toFixed(2)}
-                  </p>
+                  {relatedProduct.price && (
+                    <p className={styles.relatedPrice}>{relatedProduct.price}</p>
+                  )}
                 </Link>
               ))}
             </div>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
+import Image from 'next/image';
+import { FaLinkedin, FaYoutube } from 'react-icons/fa';
 import styles from './Footer.module.css';
 
 const Footer: React.FC = () => {
@@ -8,22 +8,12 @@ const Footer: React.FC = () => {
 
   const socialLinks = [
     {
-      href: 'https://www.facebook.com/ecomeasure',
-      label: 'Facebook',
-      icon: <FaFacebookF />,
+      href: 'https://www.linkedin.com/in/marvilon-llc-37a153302/',
+      label: 'LinkedIn',
+      icon: <FaLinkedin />,
     },
     {
-      href: 'https://www.instagram.com/ecomeasure',
-      label: 'Instagram',
-      icon: <FaInstagram />,
-    },
-    {
-      href: 'https://x.com/ecomeasure',
-      label: 'X (Twitter)',
-      icon: <FaXTwitter />,
-    },
-    {
-      href: 'https://www.youtube.com/@ecomeasure',
+      href: 'https://www.youtube.com/watch?v=t4HkFY1hUdY',
       label: 'YouTube',
       icon: <FaYoutube />,
     },
@@ -35,9 +25,9 @@ const Footer: React.FC = () => {
   ];
 
   const companyInfo = {
-    email: 'info@ecomeasure.com',
-    phone: '+1 (555) 123-4567',
-    address: '123 Green Street, Earth City, EC 12345',
+    email: 'sergtkh@gmail.com',
+    phone: '+380501680880',
+    address: 'Kyiv, Bogatyrska street, 1D',
   };
 
   return (
@@ -47,7 +37,8 @@ const Footer: React.FC = () => {
         <div className={styles.topRow}>
           <div className={styles.logoSection}>
             <Link href="/" className={styles.logoLink}>
-              🌿 <span className={styles.logoText}>EcoMeasure</span>
+              <Image src="/svg/marvilon_logo.svg" alt="Marvilon Logo" width={40} height={40} />
+              <span className={styles.logoText}>MARVILON</span>
             </Link>
           </div>
 
@@ -102,7 +93,7 @@ const Footer: React.FC = () => {
         <hr className={styles.line} />
 
         {/* Copyright */}
-        <p className={styles.copy}>© {year} EcoMeasure. All rights reserved.</p>
+        <p className={styles.copy}>© {year} Marvilon. All rights reserved.</p>
       </div>
     </footer>
   );

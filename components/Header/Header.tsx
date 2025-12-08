@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import styles from './Header.module.css';
 
@@ -12,7 +13,8 @@ export default function Header() {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/products', label: 'Products' },
-    { href: '/history/company', label: 'History' },
+    { href: '/history/company', label: 'Company' },
+    { href: '/history/tech', label: 'Technology' },
     { href: '/contacts', label: 'Contacts' },
   ] as const;
 
@@ -24,7 +26,8 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
-          🌿 EcoMeasure
+          <Image src="/svg/marvilon_logo.svg" alt="Marvilon Logo" width={40} height={40} priority />
+          <span className={styles.logoText}>MARVILON</span>
         </Link>
 
         {/* Desktop Navigation */}

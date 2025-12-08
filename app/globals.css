@@ -22,9 +22,9 @@ body {
 :root {
   /* Color palette */
   --black: rgb(0, 0, 0);
-  --muted-teal: rgb(56, 95, 66);
+  --muted-teal: rgb(43, 67, 89);
   --champagne-mist: rgb(252, 251, 251);
-  --khaki-beige: #baa898ff;
+  --khaki-beige: rgb(115, 184, 199);
   --pale-sky: #bfd7eaff;
 
   /* Typography */
