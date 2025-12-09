@@ -1,25 +1,38 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | MARV2X',
+  title: 'Contact Us',
   description:
-    'Get in touch with MARV2X for inquiries about our environmental measurement solutions. Contact our team for product information, technical support, and partnership opportunities.',
+    'Contact Marvilon for inquiries about optical measurement systems, technical support, and industrial monitoring solutions. Expert support for ATEX and CEMS applications.',
   keywords: [
-    'contact MARV2X',
-    'environmental sensors inquiry',
-    'technical support',
-    'product information',
-    'partnership opportunities',
+    'contact Marvilon',
+    'industrial measurement support',
+    'ATEX consultation',
+    'CEMS inquiry',
+    'optical analyzer support',
+    'technical assistance',
+    'measurement system inquiry',
   ],
   openGraph: {
-    title: 'Contact Us | MARV2X',
+    title: 'Contact Marvilon — Industrial Measurement Experts',
     description:
-      'Get in touch with MARV2X for inquiries about our environmental measurement solutions.',
+      'Get in touch with Marvilon for technical support, product inquiries, and custom measurement solutions for harsh industrial environments.',
+    url: 'https://marvilon.com/contacts',
     type: 'website',
+    images: [
+      {
+        url: '/tech/marv2x_front_view.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Contact Marvilon',
+      },
+    ],
   },
-  robots: {
-    index: true,
-    follow: true,
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Marvilon',
+    description: 'Expert support for industrial optical measurement systems and ATEX applications.',
+    images: ['/tech/marv2x_front_view.jpg'],
   },
 };
 

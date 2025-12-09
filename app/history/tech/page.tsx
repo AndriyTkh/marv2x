@@ -1,12 +1,45 @@
 import Image from 'next/image';
 import styles from './page.module.css';
+import type { Metadata } from 'next';
 
-export const metadata = {
-  title: 'Technology | Marvilon',
+export const metadata: Metadata = {
+  title: 'Technology & Innovation',
   description:
-    'Advanced optical measurement systems for continuous industrial process monitoring with simultaneous gas, dust, and moisture detection.',
-  keywords:
-    'optical measurement, NDIR, industrial monitoring, gas composition, particulate matter, ATEX, emissions monitoring',
+    'Advanced optical measurement systems for continuous industrial process monitoring with simultaneous gas, dust, and moisture detection. NDIR, UV/Vis, and laser photometry.',
+  keywords: [
+    'optical measurement technology',
+    'NDIR gas analysis',
+    'industrial monitoring systems',
+    'gas composition analysis',
+    'particulate matter detection',
+    'ATEX technology',
+    'emissions monitoring',
+    'isokinetic sampling',
+    'laser photometry',
+    'UV Vis absorption',
+  ],
+  openGraph: {
+    title: 'Marvilon Technology — Multi-Parameter Optical Measurement',
+    description:
+      'Simultaneous measurement of CO, CO₂, NO, SO₂, NH₃, CH₄, particulate matter, and moisture using advanced optical technologies for harsh industrial environments.',
+    url: 'https://marvilon.com/history/tech',
+    type: 'website',
+    images: [
+      {
+        url: '/tech/marv2x_front_view.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Marvilon Optical Measurement Technology',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Marvilon Technology — Advanced Optical Measurement',
+    description:
+      'Multi-parameter monitoring: gases, dust, and moisture in one system. NDIR, UV/Vis, and laser photometry.',
+    images: ['/tech/marv2x_front_view.jpg'],
+  },
 };
 
 export default function TechnologyPage() {

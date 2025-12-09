@@ -264,8 +264,8 @@ Reply directly to this email to respond to ${firstName}.
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: 'MARV2X Contact <onboarding@resend.dev>',
-      to: 'otherbadeng@gmail.com',
+      from: 'MARVILON contact form <onboarding@resend.dev>',
+      to: ['otherbadeng@gmail.com'],
       subject: `${topic ? `[${topic}]` : '[New Inquiry]'} ${firstName} ${lastName} - ${company}`,
       text: emailText,
       html: emailHtml,

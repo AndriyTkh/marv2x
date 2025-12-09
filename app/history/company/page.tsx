@@ -1,12 +1,42 @@
 import Image from 'next/image';
 import styles from './page.module.css';
+import type { Metadata } from 'next';
 
-export const metadata = {
-  title: 'Company History | Marvilon',
+export const metadata: Metadata = {
+  title: 'Company History',
   description:
-    'MARVILON LLC history: from optical component development to complete industrial measurement systems for hazardous environments.',
-  keywords:
-    'MARVILON history, industrial measurement, optical technology, ATEX, gas analysis, dust measurement',
+    'MARVILON LLC history: from optical component development to complete industrial measurement systems for hazardous environments. Founded in Kyiv, Ukraine.',
+  keywords: [
+    'MARVILON history',
+    'industrial measurement company',
+    'optical technology development',
+    'ATEX systems',
+    'gas analysis history',
+    'dust measurement innovation',
+    'Ukrainian engineering',
+  ],
+  openGraph: {
+    title: 'Marvilon Company History — From Components to Complete Systems',
+    description:
+      'Discover how MARVILON evolved from optical component development to building complete measurement systems for wet gas and explosive environments.',
+    url: 'https://marvilon.com/history/company',
+    type: 'website',
+    images: [
+      {
+        url: '/company/workplace-stock.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Marvilon Engineering Workplace',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Marvilon Company History',
+    description:
+      'From optical components to complete industrial measurement systems for hazardous environments.',
+    images: ['/company/workplace-stock.jpg'],
+  },
 };
 
 export default function CompanyHistoryPage() {

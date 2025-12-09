@@ -13,13 +13,13 @@ export default function ContactPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'ContactPage',
-            name: 'Contact MARV2X',
+            name: 'Contact Marvilon',
             description:
-              'Contact MARV2X for inquiries about environmental measurement solutions, technical support, and partnership opportunities.',
-            url: 'https://marv2x.com/contacts',
+              'Contact Marvilon for inquiries about optical measurement systems, technical support, and industrial monitoring solutions.',
+            url: 'https://marvilon.com/contacts',
             mainEntity: {
               '@type': 'Organization',
-              name: 'MARV2X',
+              name: 'Marvilon LLC',
               email: 'otherbadeng@gmail.com',
               contactPoint: {
                 '@type': 'ContactPoint',

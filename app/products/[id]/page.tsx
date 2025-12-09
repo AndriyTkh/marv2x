@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import products from '@/public/products.json';
 import ImageGallery from '@/components/ImageGallery/ImageGallery';
 import styles from './product.module.css';
+import type { Metadata } from 'next';
 
 type Product = (typeof products)[0];
 
@@ -13,16 +14,54 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
   const { id } = await params;
   const product = products.find((p) => p.id === id);
 
   if (!product) return { title: 'Product Not Found' };
 
+  const productKeywords = [
+    product.name,
+    ...product.certifications,
+    'optical measurement',
+    'industrial monitoring',
+    'dust analyzer',
+    'gas analyzer',
+    'CEMS',
+  ];
+
+  // Extract key features for description
+  const keyFeatures = product.features.slice(0, 2).join('. ');
+  const enhancedDescription = `${product.shortDescription} ${keyFeatures}`;
+
   return {
-    title: `${product.name} | MARV2X`,
-    description: product.shortDescription,
-    keywords: `${product.name}, ${product.certifications.join(', ')}, environmental sensor, measurement device`,
+    title: product.name,
+    description: enhancedDescription.length > 155 ? product.shortDescription : enhancedDescription,
+    keywords: productKeywords,
+    openGraph: {
+      title: `${product.name} — Marvilon Industrial Measurement`,
+      description: product.shortDescription,
+      url: `https://marvilon.com/products/${product.id}`,
+      type: 'website',
+      images: [
+        {
+          url: product.imageUrls[0] || '/tech/marv2x_front_view.jpg',
+          width: 1200,
+          height: 630,
+          alt: product.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.name} — Marvilon`,
+      description: product.shortDescription,
+      images: [product.imageUrls[0] || '/tech/marv2x_front_view.jpg'],
+    },
   };
 }
 

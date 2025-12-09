@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent, useRef } from 'react';
+import { useState, FormEvent, useRef, useEffect } from 'react';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import styles from './ContactForm.module.css';
 
@@ -29,6 +29,7 @@ interface FormErrors {
 
 const MIN_MESSAGE_LENGTH = 20;
 const MAX_MESSAGE_LENGTH = 2000;
+const FORM_STORAGE_KEY = 'marvilon_contact_form_backup';
 
 // Validation patterns
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -36,8 +37,33 @@ const PHONE_REGEX = /^[\d\s\-\+\(\)]+$/;
 const POSTAL_CODE_REGEX = /^[A-Za-z0-9\s\-]+$/;
 const NAME_REGEX = /^[a-zA-Z\s\-']+$/;
 
-export default function ContactForm() {
-  const [formData, setFormData] = useState<FormData>({
+// Helper function to load initial form data from localStorage
+const getInitialFormData = (): FormData => {
+  if (typeof window === 'undefined') {
+    return {
+      firstName: '',
+      lastName: '',
+      company: '',
+      email: '',
+      phone: '',
+      country: '',
+      city: '',
+      postalCode: '',
+      topic: '',
+      message: '',
+    };
+  }
+
+  try {
+    const savedData = localStorage.getItem(FORM_STORAGE_KEY);
+    if (savedData) {
+      return JSON.parse(savedData);
+    }
+  } catch (error) {
+    console.error('Failed to load form data from localStorage:', error);
+  }
+
+  return {
     firstName: '',
     lastName: '',
     company: '',
@@ -48,7 +74,11 @@ export default function ContactForm() {
     postalCode: '',
     topic: '',
     message: '',
-  });
+  };
+};
+
+export default function ContactForm() {
+  const [formData, setFormData] = useState<FormData>(getInitialFormData);
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -57,6 +87,15 @@ export default function ContactForm() {
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const formLoadTime = useRef<number>(Date.now());
   const { executeRecaptcha } = useGoogleReCaptcha();
+
+  // Save form data to localStorage whenever it changes
+  useEffect(() => {
+    try {
+      localStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(formData));
+    } catch (error) {
+      console.error('Failed to save form data to localStorage:', error);
+    }
+  }, [formData]);
 
   // Validation functions
   const validateField = (name: string, value: string): string | undefined => {
@@ -249,6 +288,8 @@ export default function ContactForm() {
       }
 
       setStatus('success');
+
+      // Clear form data
       setFormData({
         firstName: '',
         lastName: '',
@@ -264,6 +305,13 @@ export default function ContactForm() {
       setErrors({});
       setTouched({});
       formLoadTime.current = Date.now();
+
+      // Clear localStorage backup
+      try {
+        localStorage.removeItem(FORM_STORAGE_KEY);
+      } catch (error) {
+        console.error('Failed to clear form data from localStorage:', error);
+      }
     } catch (error) {
       setStatus('error');
       setErrorMessage(error instanceof Error ? error.message : 'Something went wrong');
