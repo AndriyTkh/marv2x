@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import products from '@/public/products.json';
+import ImageGallery from '@/components/ImageGallery/ImageGallery';
 import styles from './product.module.css';
 
 type Product = (typeof products)[0];
@@ -45,15 +46,9 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
         {/* Product Section */}
         <section className={styles.productSection}>
-          {/* Product Image */}
+          {/* Product Image Gallery */}
           <div className={styles.imageContainer}>
-            <Image
-              src={product.imageUrls[0] || '/hero-cycle/stock-0.jpg'}
-              alt={product.name}
-              fill
-              priority
-              className={styles.image}
-            />
+            <ImageGallery images={product.imageUrls} productName={product.name} />
           </div>
 
           {/* Product Info */}
