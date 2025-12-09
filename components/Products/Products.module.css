@@ -97,6 +97,7 @@
 }
 
 .content {
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -216,11 +217,7 @@
   }
 
   .imageWrapper {
-    background: linear-gradient(
-      135deg,
-      rgba(191, 215, 234, 0.2),
-      rgba(238, 224, 203, 0.1)
-    );
+    background: linear-gradient(135deg, rgba(191, 215, 234, 0.2), rgba(238, 224, 203, 0.1));
   }
 
   .viewAllButton {

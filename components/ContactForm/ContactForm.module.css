@@ -76,6 +76,23 @@
   border-radius: var(--radius-sm);
   font-size: 1rem;
   transition: border-color var(--transition-fast);
+  background-color: var(--champagne-mist);
+  color: var(--black);
+}
+
+@media (prefers-color-scheme: dark) {
+  .field input,
+  .field textarea,
+  .field select {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: var(--khaki-beige);
+    color: var(--champagne-mist);
+  }
+
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: rgba(252, 251, 251, 0.5);
+  }
 }
 
 .field input:focus,
@@ -84,6 +101,15 @@
   outline: none;
   border-color: var(--muted-teal);
   box-shadow: 0 0 0 3px rgba(56, 95, 66, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus {
+    border-color: var(--khaki-beige);
+    box-shadow: 0 0 0 3px rgba(79, 159, 176, 0.2);
+  }
 }
 
 .field textarea {
@@ -106,6 +132,17 @@
 
 .submitBtn:hover:not(:disabled) {
   background-color: rgb(46, 75, 56);
+}
+
+@media (prefers-color-scheme: dark) {
+  .submitBtn {
+    background-color: var(--khaki-beige);
+    color: var(--black);
+  }
+
+  .submitBtn:hover:not(:disabled) {
+    background-color: var(--khaki-beige-secondary);
+  }
 }
 
 .submitBtn:disabled {
@@ -164,6 +201,12 @@
 .recaptchaNotice a {
   color: var(--muted-teal);
   text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+  .recaptchaNotice a {
+    color: var(--khaki-beige);
+  }
 }
 
 @media (prefers-color-scheme: dark) {

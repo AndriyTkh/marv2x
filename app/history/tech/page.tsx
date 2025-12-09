@@ -1,147 +1,217 @@
+import Image from 'next/image';
 import styles from './page.module.css';
 
 export const metadata = {
   title: 'Technology | Marvilon',
   description:
-    "Discover Marvilon's cutting-edge optical measurement solutions for industrial process monitoring.",
+    'Advanced optical measurement systems for continuous industrial process monitoring with simultaneous gas, dust, and moisture detection.',
   keywords:
-    'optical measurement, industrial monitoring, gas composition, dust measurement, moisture detection',
+    'optical measurement, NDIR, industrial monitoring, gas composition, particulate matter, ATEX, emissions monitoring',
 };
 
 export default function TechnologyPage() {
   return (
     <main className={styles.main}>
-      <div className={styles.container}>
-        <h1 className={styles.pageTitle}>Technology Overview</h1>
+      <div className="container">
+        <h1 className={styles.title}>Marvilon Technology: Advanced Optical Measurement Systems</h1>
 
+        {/* S-1: Overview - Text left, Image right */}
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Advanced Optical Measuring Systems</h2>
-          <p className={styles.text}>
-            Marvilon develops cutting-edge optical measurement solutions that enable real-time
-            monitoring of industrial processes. Our systems are designed to provide accurate and
-            reliable data in harsh environments, including metallurgical, petrochemical, oil, and
-            fertilizer industries.
-          </p>
-
-          <div className={styles.features}>
-            <h3 className={styles.featuresTitle}>Key Features:</h3>
-            <ul className={styles.featureList}>
-              <li>Simultaneous measurement of gas composition, dust, and moisture</li>
-              <li>Modular integration of infrared (IR) and visible light optical sensors</li>
-              <li>High reliability in wet, explosive, and high-temperature conditions</li>
-            </ul>
-          </div>
-
-          <div className={styles.imagePlaceholder}>
-            <p>Image placeholder: Illustration of the optical measuring cell or system diagram</p>
+          <div className={styles.horizontal}>
+            <div className={styles.textContent}>
+              <h2>Overview</h2>
+              <p>
+                Marvilon develops integrated optical measuring systems for continuous industrial
+                process monitoring. Unlike conventional solutions that measure only gas composition,
+                dust, or moisture, our system simultaneously tracks all essential parameters in
+                real-time, enabling precise process control and regulatory compliance.
+              </p>
+            </div>
+            <div className={styles.imageWrapper}>
+              <Image
+                src="/tech/marv2x_front_view.jpg"
+                alt="Marvilon optical measurement system front view"
+                width={800}
+                height={600}
+                className={styles.image}
+              />
+            </div>
           </div>
         </section>
 
+        {/* S-2: Optical Measurement Cell left, Detection limits right */}
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Integrated System Design</h2>
-          <p className={styles.text}>
-            Our technology combines several critical components into a single, compact system:
-          </p>
-
-          <ul className={styles.componentList}>
-            <li>
-              <strong>Optical Measurement Cell:</strong> Designed for precision detection of gases
-              and particulates
-            </li>
-            <li>
-              <strong>Sampling Probes:</strong> Engineered for stable operation in challenging
-              process streams
-            </li>
-            <li>
-              <strong>Embedded Control & Data Acquisition:</strong> Full remote access, monitoring,
-              and data logging capabilities
-            </li>
-            <li>
-              <strong>Robust Mechanical & Electrical Design:</strong> Ensures system stability and
-              long-term operation
-            </li>
-          </ul>
-
-          <div className={styles.imagePlaceholder}>
-            <p>Image placeholder: CAD model or 3D rendering of the prototype system</p>
+          <div className={styles.horizontal}>
+            <div className={styles.textContent}>
+              <h2>Core Technology Components</h2>
+              <h3>1. Optical Measurement Cell</h3>
+              <ul>
+                <li>
+                  <strong>Measures multiple gas species:</strong> CO, CO₂, NO, NO₂, SO₂, NH₃, CH₄
+                </li>
+                <li>
+                  <strong>Detects particulate matter:</strong> PM1, PM2.5, PM10
+                </li>
+                <li>
+                  <strong>Measures moisture content</strong> in flue gas streams
+                </li>
+                <li>
+                  <strong>Measurement method:</strong> Non-dispersive IR (NDIR) for gases; UV/Vis
+                  absorption for reactive species; forward-scattering laser photometry for dust
+                </li>
+              </ul>
+            </div>
+            <div className={styles.specs}>
+              <h4>Detection limits:</h4>
+              <ul>
+                <li>CO: 1 ppm – 5000 ppm</li>
+                <li>CO₂: 50 ppm – 20,000 ppm</li>
+                <li>NO/NO₂: 0.5 ppm – 500 ppm</li>
+                <li>SO₂: 1 ppm – 2000 ppm</li>
+                <li>NH₃: 1 ppm – 2000 ppm</li>
+                <li>CH₄: 2 ppm – 10,000 ppm</li>
+                <li>PM: 0.1 mg/m³ – 500 mg/m³</li>
+                <li>Moisture: 0 – 100% RH</li>
+              </ul>
+              <p>
+                <strong>Accuracy:</strong> ±2% of reading for gases; ±5% for particulate matter; ±3%
+                RH for moisture
+              </p>
+              <p>Optimized optical path for high sensitivity and minimal cross-sensitivity</p>
+            </div>
           </div>
         </section>
 
+        {/* S-3: Video centered */}
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Prototype Development & Validation</h2>
-          <p className={styles.text}>
-            The Marvilon team has developed third-generation prototypes using advanced CAD modeling,
-            3D printing, and flow simulation techniques. Each unit undergoes rigorous internal
-            testing to ensure accuracy and stability before deployment in pilot sites.
-          </p>
-
-          <div className={styles.highlights}>
-            <h3 className={styles.highlightsTitle}>Prototype Highlights:</h3>
-            <ul className={styles.highlightList}>
-              <li>Fully integrated system units for field testing</li>
-              <li>Iterative calibration and lab validation using certified standards</li>
-              <li>
-                Optimized optical cell and sampling probe performance for real industrial conditions
-              </li>
-            </ul>
-          </div>
-
-          <div className={styles.imagePlaceholder}>
-            <p>Image placeholder: Photo of assembled prototype or lab testing setup</p>
+          <div className={styles.videoWrapper}>
+            <video controls className={styles.video} poster="/tech/marv2x_3d_render.jpg">
+              <source src="/tech/marv2x_animation.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </section>
 
+        {/* S-4: Image left, Sampling System + Embedded Control right */}
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Field-Ready Deployment</h2>
-          <p className={styles.text}>
-            Our systems are designed for easy installation and reliable operation in industrial
-            environments. Before pilot deployment, prototypes are configured with:
-          </p>
-
-          <ul className={styles.componentList}>
-            <li>Detailed installation and user manuals</li>
-            <li>Remote data acquisition and monitoring software</li>
-            <li>Pre-calibrated sensors and safety measures for explosive zones</li>
-          </ul>
-
-          <div className={styles.benefits}>
-            <h3 className={styles.benefitsTitle}>Benefits for Operators:</h3>
-            <ul className={styles.benefitList}>
-              <li>Quick deployment and minimal downtime</li>
-              <li>Continuous, accurate monitoring of critical process parameters</li>
-              <li>Actionable insights for process optimization and compliance</li>
-            </ul>
-          </div>
-
-          <div className={styles.imagePlaceholder}>
-            <p>Image placeholder: Field installation photo or industrial environment graphic</p>
-          </div>
-        </section>
-
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Certification and Compliance</h2>
-          <p className={styles.text}>
-            Marvilon systems are engineered with compliance in mind, adhering to international
-            standards for industrial safety and monitoring. Our approach ensures that each device
-            meets strict performance and safety criteria required for industrial deployment.
-          </p>
-
-          <div className={styles.imagePlaceholder}>
-            <p>Image placeholder: Certification or compliance icons</p>
+          <div className={styles.horizontal}>
+            <div className={styles.imageWrapper}>
+              <Image
+                src="/tech/marv2x_3d_render.jpg"
+                alt="Marvilon 3D system render"
+                width={800}
+                height={600}
+                className={styles.image}
+              />
+            </div>
+            <div className={styles.textContent}>
+              <h3>2. Sampling System</h3>
+              <ul>
+                <li>
+                  High-efficiency isokinetic probes to capture representative samples in high-dust
+                  and high-moisture flue gas streams
+                </li>
+                <li>Purge-controlled channels prevent condensation and optical fouling</li>
+                <li>Configured for ATEX Zone 1 & 2 hazardous environments</li>
+                <li>
+                  <strong>Temperature handling:</strong> -20°C to 200°C; <strong>pressure:</strong>{' '}
+                  0.5 – 2 bar
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 
+        {/* Prototype Development - Horizontal layout */}
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Why Marvilon Technology?</h2>
-          <ul className={styles.whyList}>
-            <li>Comprehensive all-in-one solution for gas, dust, and moisture</li>
-            <li>Modular, scalable design suitable for multiple industries</li>
-            <li>Proven reliability through lab testing and field pilot studies</li>
-            <li>Advanced data acquisition for actionable insights and process optimization</li>
-          </ul>
+          <h2>Prototype Development & Validation</h2>
+          <div className={styles.horizontal}>
+            <div className={styles.textContent}>
+              <h3>Design & Engineering</h3>
+              <ul>
+                <li>
+                  3rd-generation optical cell developed using CAD and computational fluid dynamics
+                  (CFD) to optimize flow and minimize particle deposition
+                </li>
+                <li>
+                  Electrical schematics designed for embedded control of sensors, pumps, and purge
+                  valves
+                </li>
+                <li>Modular IR/Vis optical modules for rapid upgrades and maintenance</li>
+                <li>Six fully integrated prototypes produced for lab and field testing</li>
+              </ul>
+            </div>
+            <div className={styles.textContent}>
+              <h3>Laboratory Testing</h3>
+              <ul>
+                <li>
+                  Conducted using certified gas mixtures and NIST-traceable particulate standards
+                </li>
+                <li>Calibrated across operational ranges with linear regression verification</li>
+                <li>
+                  <strong>Environmental tests:</strong> humidity 0–100%, temperature -20°C to 200°C,
+                  particulate load up to 500 mg/m³
+                </li>
+                <li>Validation against DSTU EN 15267:2024 standards for air quality monitoring</li>
+              </ul>
+            </div>
+          </div>
+          <div className={styles.horizontal}>
+            <div className={styles.textContent}>
+              <h3>Embedded Control & Data Acquisition</h3>
+              <ul>
+                <li>Real-time acquisition of 6 gas species + particulate matter + moisture</li>
+                <li>
+                  <strong>Sampling frequency:</strong> 1 Hz (1 measurement per second)
+                </li>
+                <li>
+                  Data storage with timestamped logs and remote monitoring via secure web interface
+                </li>
+                <li>
+                  Built-in calibration routines using certified gas standards and optical references
+                </li>
+              </ul>
+            </div>
+            <div className={styles.textContent}>
+              <h3>Field Deployment</h3>
+              <ul>
+                <li>Embedded software enables remote acquisition, monitoring, and calibration</li>
+                <li>Pilot installations in metallurgical and petrochemical plants</li>
+                <li>
+                  Continuous operation validated with uptime &gt;99% over 3-month trial period
+                </li>
+                <li>Rapid fault detection with automated alerts</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-          <div className={styles.imagePlaceholder}>
-            <p>Image placeholder: Infographic summarizing system benefits</p>
+        {/* Why the Technology Works - Horizontal grid */}
+        <section className={styles.section}>
+          <h2>Why the Technology Works</h2>
+          <div className={styles.grid}>
+            <div className={styles.gridItem}>
+              <strong>Simultaneous Multi-Parameter Measurement</strong>
+              <p>Captures all critical emissions and process parameters in one system.</p>
+            </div>
+            <div className={styles.gridItem}>
+              <strong>High Sensitivity & Accuracy</strong>
+              <p>
+                Detects trace levels of gases and fine particulates with precision suitable for
+                regulatory compliance.
+              </p>
+            </div>
+            <div className={styles.gridItem}>
+              <strong>Industrial Robustness</strong>
+              <p>Designed to operate reliably in explosive, wet, and high-dust environments.</p>
+            </div>
+            <div className={styles.gridItem}>
+              <strong>Modular & Upgradable</strong>
+              <p>
+                Optical and sampling modules can be swapped or upgraded without redesigning the
+                whole system.
+              </p>
+            </div>
           </div>
         </section>
       </div>

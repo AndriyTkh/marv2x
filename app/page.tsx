@@ -1,5 +1,7 @@
 import Hero from '@/components/Hero/Hero';
+import Technology from '@/components/Technology/Technology';
 import ProductList from '@/components/Products/Products';
+import About from '@/components/About/About';
 
 export const metadata = {
   title: 'MARV2X | Advanced Environmental Measurement Solutions',
@@ -13,12 +15,14 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <Technology />
       <ProductList
         limit={3}
         showViewAll
         title="Featured Products"
         description="Explore our selection of industry-leading environmental measurement solutions."
       />
+      <About />
     </>
   );
 }

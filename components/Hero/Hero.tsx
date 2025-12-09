@@ -54,7 +54,7 @@ export default function Hero() {
       {/* Content */}
       <div className={styles.content}>
         <div className={styles.container}>
-          <h1 className={styles.title}>MARV2X</h1>
+          <h1 className={styles.title}>MARVILON</h1>
           <p className={styles.catchPhrase}>{catchPhrase}</p>
           <a href="/products" className={styles.cta}>
             Explore Products

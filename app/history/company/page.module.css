@@ -1,0 +1,156 @@
+.main {
+  min-height: 80vh;
+  padding: var(--sp-4) 0;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: var(--sp-5);
+  text-align: center;
+  color: var(--muted-teal);
+}
+
+.section {
+  padding: var(--sp-4) 0;
+  border-top: 2px solid var(--muted-teal);
+}
+
+.section h2 {
+  font-size: 2rem;
+  padding: var(--sp-4) 0;
+  color: var(--muted-teal);
+}
+
+.section h3 {
+  font-size: 1.5rem;
+  margin-bottom: var(--sp-3);
+  color: var(--muted-tead-secondary);
+}
+
+.section p {
+  line-height: 1.8;
+  margin-bottom: var(--sp-3);
+}
+
+.section ul {
+  list-style: circle;
+  margin-bottom: var(--sp-3);
+}
+
+.section ul li {
+  margin-bottom: var(--sp-2);
+  line-height: 1.6;
+}
+
+/* Horizontal layouts */
+.horizontal {
+  display: flex;
+  gap: var(--sp-5);
+  align-items: start;
+}
+
+.textContent {
+  flex: 1;
+}
+
+.imageWrapper {
+  flex: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Grid layout for breakthrough features */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4);
+  margin-top: var(--sp-4);
+}
+
+.gridItem {
+  padding: var(--sp-4);
+  background: var(--pale-sky);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--muted-tead-secondary);
+}
+
+.gridItem strong {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: var(--sp-2);
+  color: var(--muted-teal);
+}
+
+.gridItem p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .title {
+    color: var(--khaki-beige);
+  }
+
+  .section h2 {
+    color: var(--khaki-beige);
+    border-bottom-color: var(--khaki-beige);
+  }
+
+  .section h3 {
+    color: var(--khaki-beige-secondary);
+  }
+
+  .gridItem {
+    background: rgba(115, 184, 199, 0.15);
+    border-left-color: var(--khaki-beige-secondary);
+  }
+
+  .gridItem strong {
+    color: var(--khaki-beige);
+  }
+
+  .imageWrapper {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .horizontal {
+    flex-direction: column;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .section h2 {
+    font-size: 1.5rem;
+  }
+
+  .section h3 {
+    font-size: 1.3rem;
+  }
+
+  .section ul {
+    margin-left: var(--sp-4);
+  }
+
+  .horizontal {
+    gap: var(--sp-4);
+  }
+}

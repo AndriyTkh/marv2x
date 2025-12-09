@@ -1,172 +1,204 @@
 .main {
   min-height: 80vh;
-  padding: 4rem 0;
-  background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+  padding: var(--sp-4) 0;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.pageTitle {
+.title {
+  font-size: 2.5rem;
+  margin-bottom: var(--sp-5);
   text-align: center;
-  font-size: 3rem;
-  margin-bottom: 3rem;
-  color: var(--text-primary, #1a1a1a);
-  font-weight: 700;
+  color: var(--muted-teal);
 }
 
 .section {
-  margin-bottom: 4rem;
-  padding: 2rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  /* margin-bottom: var(--sp-6); */
+  padding: var(--sp-4) 0;
+  border-top: 2px solid var(--muted-teal);
 }
 
-.sectionTitle {
+.section h2 {
   font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: var(--primary-color, #0066cc);
-  font-weight: 600;
-  border-bottom: 3px solid var(--primary-color, #0066cc);
-  padding-bottom: 0.5rem;
+  padding: var(--sp-4) 0;
+  color: var(--muted-teal);
+  /* border-bottom: 2px solid var(--muted-teal); */
+  /* padding-bottom: var(--sp-2); */
 }
 
-.text {
-  font-size: 1.1rem;
+.section h3 {
+  font-size: 1.5rem;
+  /* margin-top: var(--sp-4); */
+  margin-bottom: var(--sp-3);
+  color: var(--muted-tead-secondary);
+}
+
+.section h4 {
+  font-size: 1.2rem;
+  margin-top: var(--sp-3);
+  margin-bottom: var(--sp-2);
+  color: var(--muted-tead-secondary);
+}
+
+.section p {
   line-height: 1.8;
-  color: var(--text-secondary, #444);
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--sp-3);
 }
 
-.features,
-.highlights,
-.benefits {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background: #f8f9fa;
-  border-radius: 8px;
-  border-left: 4px solid var(--primary-color, #0066cc);
+.section ul {
+  /* list-style: circle; */
+  /* margin-left: 16px; */
+  margin-bottom: var(--sp-3);
 }
 
-.featuresTitle,
-.highlightsTitle,
-.benefitsTitle {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-  color: var(--text-primary, #1a1a1a);
-  font-weight: 600;
-}
-
-.featureList,
-.highlightList,
-.benefitList,
-.componentList,
-.whyList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.featureList li,
-.highlightList li,
-.benefitList li,
-.whyList li {
-  padding: 0.75rem 0 0.75rem 2rem;
-  position: relative;
-  font-size: 1.05rem;
+.section ul li {
+  margin-bottom: var(--sp-2);
   line-height: 1.6;
-  color: var(--text-secondary, #444);
 }
 
-.featureList li::before,
-.highlightList li::before,
-.benefitList li::before,
-.whyList li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--primary-color, #0066cc);
-  font-weight: bold;
+/* Horizontal layouts */
+.horizontal {
+  display: flex;
+  gap: var(--sp-5);
+  align-items: start;
+  /* margin-top: var(--sp-4); */
+}
+
+.textContent {
+  flex: 1;
+}
+
+.specs {
+  flex: 1;
+  background: var(--pale-sky);
+  padding: var(--sp-4);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--muted-teal);
+}
+
+.specs h4 {
+  margin-top: 0;
+}
+
+.specs ul {
+  margin-left: var(--sp-4);
+}
+
+.specs p {
+  margin-bottom: var(--sp-2);
+}
+
+.imageWrapper,
+.videoWrapper {
+  flex: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.videoWrapper {
+  flex: none;
+  width: 100%;
+  max-width: 900px;
+  margin: var(--sp-5) auto;
+}
+
+.image,
+.video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Grid layout for benefits */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-4);
+  margin-top: var(--sp-4);
+}
+
+.gridItem {
+  padding: var(--sp-4);
+  background: var(--pale-sky);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--muted-tead-secondary);
+}
+
+.gridItem strong {
+  display: block;
   font-size: 1.2rem;
+  margin-bottom: var(--sp-2);
+  color: var(--muted-teal);
 }
 
-.componentList {
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0;
-}
-
-.componentList li {
-  padding: 1rem 0 1rem 2rem;
-  position: relative;
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--text-secondary, #444);
-  border-bottom: 1px solid #e9ecef;
-}
-
-.componentList li:last-child {
-  border-bottom: none;
-}
-
-.componentList li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: var(--primary-color, #0066cc);
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.componentList li strong {
-  color: var(--text-primary, #1a1a1a);
-  font-weight: 600;
-}
-
-.imagePlaceholder {
-  margin-top: 2rem;
-  padding: 3rem 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 8px;
-  text-align: center;
-  color: white;
-  font-style: italic;
-  opacity: 0.9;
-}
-
-.imagePlaceholder p {
+.gridItem p {
   margin: 0;
-  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .title {
+    color: var(--khaki-beige);
+  }
+
+  .section h2 {
+    color: var(--khaki-beige);
+    border-bottom-color: var(--khaki-beige);
+  }
+
+  .section h3 {
+    color: var(--khaki-beige-secondary);
+  }
+
+  .specs {
+    background: rgba(115, 184, 199, 0.15);
+    border-left-color: var(--khaki-beige);
+  }
+
+  .gridItem {
+    background: rgba(115, 184, 199, 0.15);
+    border-left-color: var(--khaki-beige-secondary);
+  }
+
+  .gridItem strong {
+    color: var(--khaki-beige);
+  }
+
+  .imageWrapper,
+  .videoWrapper {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .horizontal {
+    flex-direction: column;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 1rem;
+  .title {
+    font-size: 1.8rem;
   }
 
-  .pageTitle {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .section {
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .sectionTitle {
+  .section h2 {
     font-size: 1.5rem;
   }
 
-  .text {
-    font-size: 1rem;
+  .section h3 {
+    font-size: 1.3rem;
   }
 
-  .imagePlaceholder {
-    padding: 2rem 1rem;
+  .section ul {
+    margin-left: var(--sp-4);
+  }
+
+  .horizontal {
+    gap: var(--sp-4);
   }
 }

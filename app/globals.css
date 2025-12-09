@@ -22,9 +22,11 @@ body {
 :root {
   /* Color palette */
   --black: rgb(0, 0, 0);
-  --muted-teal: rgb(43, 67, 89);
+   --muted-teal: rgb(42, 65, 87); /* Light theme */
+  --muted-tead-secondary: rgb(81, 145, 163); /* Light theme */
   --champagne-mist: rgb(252, 251, 251);
-  --khaki-beige: rgb(115, 184, 199);
+  --khaki-beige: rgb(79, 159, 176); /* Dark theme */
+  --khaki-beige-secondary: rgb(81, 175, 212); /* Dark theme */
   --pale-sky: #bfd7eaff;
 
   /* Typography */
