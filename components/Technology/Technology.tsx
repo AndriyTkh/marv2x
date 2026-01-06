@@ -9,26 +9,26 @@ export default function Technology() {
         <div className={styles.content}>
           <div className={styles.textContent}>
             <p className={styles.description}>
-              Marvilon develops integrated optical measuring systems for continuous industrial
-              process monitoring. Unlike conventional solutions, our system simultaneously tracks
-              gas composition, particulate matter, and moisture in real-time, enabling precise
-              process control and regulatory compliance.
+              Marvilon's integrated optical measuring systems deliver simultaneous multi-parameter
+              measurement in a single device. Our patent-pending technology combines UV/Vis and
+              infrared spectroscopy to monitor gases, dust, and moisture in real-time—even in
+              hazardous and wet dust environments where conventional analyzers fail.
             </p>
             <ul className={styles.features}>
               <li>
-                Simultaneous multi-parameter measurement (CO, CO₂, NO, NO₂, SO₂, NH₃, CH₄, PM,
-                moisture)
+                Integrated measurement of CO, CO₂, NO, NO₂, SO₂, NH₃, CH₄, particulate matter, and
+                moisture
               </li>
-              <li>Non-dispersive IR (NDIR) and UV/Vis absorption technology</li>
+              <li>High-pressure optical cell engineered for extreme industrial conditions</li>
               <li>ATEX Zone 1 & 2 certified for hazardous environments</li>
-              <li>Real-time data acquisition with remote monitoring</li>
+              <li>Continuous operation with remote monitoring and data acquisition</li>
             </ul>
             <Link href="/history/tech" className={styles.cta}>
               Learn More About Our Technology
             </Link>
           </div>
           <div className={styles.textContent}>
-            <h2 className={styles.title}>Advanced Optical Measurement Technology</h2>
+            <h2 className={styles.title}>Optical Measurement Technology</h2>
             <div className={styles.imageWrapper}>
               <Image
                 src="/tech/marv2x_3d_render.jpg"

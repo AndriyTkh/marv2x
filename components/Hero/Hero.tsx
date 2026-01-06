@@ -15,7 +15,9 @@ export default function Hero() {
     '/hero-cycle/stock-4.jpg',
   ];
 
-  const catchPhrase = 'Advanced Environmental Measurement Solutions for a Sustainable Future';
+  const mainHeading = 'MARVILON';
+  const subheading =
+    'Integrated Optical measuring systems for continuous industrial process and emissions monitoring.';
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -54,11 +56,27 @@ export default function Hero() {
       {/* Content */}
       <div className={styles.content}>
         <div className={styles.container}>
-          <h1 className={styles.title}>MARVILON</h1>
-          <p className={styles.catchPhrase}>{catchPhrase}</p>
-          <a href="/products" className={styles.cta}>
-            Explore Products
-          </a>
+          <h1 className={styles.title}>{mainHeading}</h1>
+          <p className={styles.catchPhrase}>{subheading}</p>
+
+          {/* Key Benefits */}
+          <div className={styles.benefits}>
+            <ul className={styles.benefitsList}>
+              <li>One system for complete process insight</li>
+              <li>Real-time multi-parameter measurement</li>
+              <li>ATEX Zone 1 & 2 certified for hazardous areas</li>
+            </ul>
+          </div>
+
+          {/* CTAs */}
+          <div className={styles.ctaGroup}>
+            <a href="/contacts" className={styles.ctaPrimary}>
+              Talk to a measurement expert
+            </a>
+            <a href="/history/tech" className={styles.ctaSecondary}>
+              Explore the technology
+            </a>
+          </div>
         </div>
       </div>
 

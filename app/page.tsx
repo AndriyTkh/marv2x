@@ -1,30 +1,41 @@
 import Hero from '@/components/Hero/Hero';
+import TrustBar from '@/components/TrustBar/TrustBar';
+import ProblemSolution from '@/components/ProblemSolution/ProblemSolution';
+import HowItWorks from '@/components/HowItWorks/HowItWorks';
+import KeyCapabilities from '@/components/KeyCapabilities/KeyCapabilities';
+import Applications from '@/components/Applications/Applications';
+import Compliance from '@/components/Compliance/Compliance';
+import WhyMarvilon from '@/components/WhyMarvilon/WhyMarvilon';
+import TechnicalVisual from '@/components/TechnicalVisual/TechnicalVisual';
 import Technology from '@/components/Technology/Technology';
 import ProductList from '@/components/Products/Products';
 import About from '@/components/About/About';
+import FinalCTA from '@/components/FinalCTA/FinalCTA';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Marvilon — Optical Measurement Systems for Industrial Processes',
+  title:
+    'Integrated Optical Measuring Systems | Industrial Process & Emissions Monitoring | Marvilon',
   description:
-    'Advanced optical systems for dust, moisture, and gas monitoring in harsh industrial environments, including wet gas and ATEX Zone 1/2 applications.',
+    'Marvilon develops advanced optical measurement solutions that simultaneously monitor gases, dust, and moisture in real time. ATEX Zone 1 & 2 certified for hazardous industrial environments.',
   keywords: [
-    'optical measuring cell',
-    'industrial gas analyzer',
-    'dust monitoring system',
-    'wet gas measurement',
-    'ATEX Zone 1',
-    'ATEX Zone 2',
-    'CO CO2 CH4 monitoring',
-    'industrial CEMS',
-    'optical particle measurement',
-    'isokinetic sampling system',
-    'continuous emission monitoring',
+    'integrated optical measuring systems',
+    'industrial process monitoring',
+    'emissions monitoring',
+    'optical measurement solutions',
+    'gas dust moisture monitoring',
+    'ATEX Zone 1 Zone 2 certified',
+    'continuous industrial measurement',
+    'multi-parameter measurement',
+    'industrial optical systems',
+    'process control measurement',
+    'hazardous environment monitoring',
+    'real-time measurement systems',
   ],
   openGraph: {
-    title: 'Marvilon — Industrial Optical Measurement Systems',
+    title: 'Integrated Optical Measuring Systems for Industrial Process Monitoring | Marvilon',
     description:
-      'High-precision optical systems for dust, moisture, and gas composition monitoring in heavy industry. Operates in wet, dusty, and explosive environments.',
+      'Advanced optical measurement solutions for simultaneous gas, dust, and moisture monitoring in hazardous industrial environments. ATEX certified for continuous operation.',
     url: 'https://marvilon.com',
     type: 'website',
     images: [
@@ -32,14 +43,15 @@ export const metadata: Metadata = {
         url: '/tech/marv2x_front_view.jpg',
         width: 1200,
         height: 630,
-        alt: 'Marvilon Optical Measurement System',
+        alt: 'Marvilon Integrated Optical Measurement System',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Marvilon — Optical Monitoring for Industrial Processes',
-    description: 'Advanced optical measurement technologies for harsh industrial environments.',
+    title: 'Integrated Optical Measuring Systems | Industrial Process Monitoring',
+    description:
+      'Advanced optical measurement solutions for continuous industrial process and emissions monitoring in hazardous environments.',
     images: ['/tech/marv2x_front_view.jpg'],
   },
 };
@@ -48,6 +60,14 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <TrustBar />
+      <ProblemSolution />
+      <HowItWorks />
+      <KeyCapabilities />
+      <Applications />
+      <Compliance />
+      <WhyMarvilon />
+      <TechnicalVisual />
       <Technology />
       <ProductList
         limit={3}
@@ -56,6 +76,7 @@ export default function HomePage() {
         description="Explore our selection of industry-leading environmental measurement solutions."
       />
       <About />
+      <FinalCTA />
     </>
   );
 }

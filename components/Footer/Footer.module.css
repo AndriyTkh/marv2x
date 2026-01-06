@@ -60,7 +60,9 @@
 
 .social a {
   color: var(--muted-teal);
-  transition: transform var(--transition-fast), opacity var(--transition-fast);
+  transition:
+    transform var(--transition-fast),
+    opacity var(--transition-fast);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -152,6 +154,16 @@
   color: var(--black);
 }
 
+/* ===================== Company Description ===================== */
+
+.companyDescription {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--black);
+  margin: 0;
+  max-width: 400px;
+}
+
 /* ===================== Divider Line ===================== */
 
 .line {
@@ -216,6 +228,10 @@
     color: var(--champagne-mist);
   }
 
+  .companyDescription {
+    color: var(--champagne-mist);
+  }
+
   .social a {
     color: var(--khaki-beige);
   }
@@ -255,6 +271,6 @@
   }
 
   .contentGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 2fr 1fr 1fr;
   }
 }

@@ -9,7 +9,8 @@ export default function About() {
         <div className={styles.header}>
           <h2 className={styles.title}>About MARVILON</h2>
           <p className={styles.subtitle}>
-            Engineering industrial measurement systems for the most challenging environments
+            Developing integrated optical measuring systems for continuous industrial process
+            automation and emissions monitoring
           </p>
         </div>
 
@@ -25,35 +26,35 @@ export default function About() {
           </div>
           <div className={styles.textContent}>
             <p>
-              Founded in Kyiv, Ukraine, MARVILON LLC specializes in designing industrial measurement
-              systems that operate where conventional solutions fail — in high-moisture, high-dust,
-              and hazardous gas environments.
+              Founded in Kyiv, Ukraine, MARVILON LLC specializes in developing integrated optical
+              measuring systems that enable simultaneous real-time measurement of gases, dust, and
+              moisture in hazardous and extreme industrial environments.
             </p>
             <p>
-              From optical component development to complete integrated systems, we deliver robust
-              solutions for continuous process monitoring in metallurgy, petrochemistry, fertilizer
-              production, and energy sectors.
+              Our patent-pending technology combines UV/Vis and infrared spectroscopy in a single
+              high-pressure optical cell, delivering complete process insight where conventional
+              analyzers cannot operate—in wet dust conditions and ATEX Zone 1/2 atmospheres.
             </p>
             <p>
-              Our breakthrough technology enables stable measurements in wet gas environments and
-              ATEX Zone 1/2 atmospheres, providing simultaneous monitoring of particulate matter,
-              moisture, and gas composition where traditional devices cannot operate.
+              From optical component development to complete integrated systems, we provide robust
+              solutions for continuous process monitoring and emissions compliance in metallurgy,
+              petrochemistry, fertilizer production, and energy sectors.
             </p>
           </div>
         </div>
 
         <div className={styles.highlights}>
           <div className={styles.highlightCard}>
-            <h3>Optical Expertise</h3>
-            <p>Advanced NDIR and laser photometry for multi-parameter measurement</p>
+            <h3>Integrated Measurement</h3>
+            <p>Simultaneous gas, dust, and moisture monitoring in one system</p>
           </div>
           <div className={styles.highlightCard}>
-            <h3>Industrial Robustness</h3>
-            <p>Designed for explosive, wet, and high-dust environments</p>
+            <h3>Extreme Environments</h3>
+            <p>ATEX certified for hazardous, wet dust, and high-temperature conditions</p>
           </div>
           <div className={styles.highlightCard}>
-            <h3>Integrated Solutions</h3>
-            <p>Complete systems from sampling probes to data acquisition</p>
+            <h3>Patent-Pending Technology</h3>
+            <p>Advanced optical cell design with UV/Vis and infrared spectroscopy</p>
           </div>
         </div>
 

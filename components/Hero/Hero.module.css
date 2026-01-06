@@ -91,7 +91,7 @@
 }
 
 .title {
-  font-size: clamp(3rem, 10vw, 5.5rem);
+  font-size: 6rem;
   font-weight: 900;
   letter-spacing: 2px;
   margin-bottom: var(--sp-4);
@@ -104,11 +104,93 @@
 .catchPhrase {
   font-size: clamp(1rem, 3vw, 1.5rem);
   line-height: 1.6;
-  margin-bottom: var(--sp-5);
+  margin-bottom: var(--sp-4);
   color: var(--champagne-mist);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   font-weight: 300;
   letter-spacing: 0.5px;
+}
+
+.benefits {
+  margin-bottom: var(--sp-5);
+}
+
+.benefitsList {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.benefitsList li {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  line-height: 1.5;
+  margin-bottom: var(--sp-2);
+  color: var(--champagne-mist);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  position: relative;
+  padding-left: var(--sp-4);
+}
+
+.benefitsList li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--khaki-beige);
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.ctaGroup {
+  display: flex;
+  gap: var(--sp-3);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary {
+  display: inline-block;
+  padding: var(--sp-3) var(--sp-5);
+  background-color: var(--muted-teal);
+  color: var(--champagne-mist);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--muted-teal);
+}
+
+.ctaPrimary:hover {
+  background-color: transparent;
+  color: var(--champagne-mist);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.ctaSecondary {
+  display: inline-block;
+  padding: var(--sp-3) var(--sp-5);
+  background-color: transparent;
+  color: var(--champagne-mist);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--champagne-mist);
+}
+
+.ctaSecondary:hover {
+  background-color: var(--champagne-mist);
+  color: var(--black);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
 .cta {
@@ -219,12 +301,27 @@
 
   .catchPhrase {
     font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-    margin-bottom: var(--sp-4);
+    margin-bottom: var(--sp-3);
   }
 
-  .cta {
+  .benefitsList li {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    margin-bottom: var(--sp-1);
+  }
+
+  .ctaGroup {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-2);
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
     padding: var(--sp-2) var(--sp-4);
     font-size: 1rem;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
   }
 
   .indicators {

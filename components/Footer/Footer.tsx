@@ -60,6 +60,17 @@ const Footer: React.FC = () => {
 
         {/* Content Grid */}
         <div className={styles.contentGrid}>
+          {/* Company Description */}
+          <div className={styles.column}>
+            <h3 className={styles.columnTitle}>About Marvilon</h3>
+            <p className={styles.companyDescription}>
+              Marvilon develops integrated optical measuring systems for continuous industrial
+              process automation and emissions monitoring. The company's patent-pending technology
+              enables simultaneous real-time measurement of gases, dust, and moisture in hazardous
+              and extreme environments.
+            </p>
+          </div>
+
           {/* Contact Info */}
           <div className={styles.column}>
             <h3 className={styles.columnTitle}>Contact</h3>
