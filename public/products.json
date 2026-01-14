@@ -25,77 +25,104 @@
         "description": "Monitors dust emissions after wet scrubber cleaning or before reuse of converter gas in a boiler.",
         "conditions": {
           "temperature": "70°C",
-          "pressure": "0.95-1.023 Bar Abs.",
-          "gasVelocity": "5-30 m/s",
+          "pressure": "0.95–1.023 Bar Abs.",
+          "gasVelocity": "5–30 m/s",
           "humidity": "100%"
         }
       }
     ],
-    "certifications": ["ATEX Zone 1/2", "Certificate No. UA.TR.001 46-19"],
+    "certifications": [],
     "imageUrls": ["/hero-cycle/stock-0.jpg", "/hero-cycle/stock-1.jpg"],
     "price": ""
   },
   {
-    "id": "product-2",
-    "name": "Industrial Sensor X1",
-    "shortDescription": "Multi-purpose industrial sensor for temperature and humidity monitoring.",
-    "longDescription": "The Industrial Sensor X1 provides reliable measurements for industrial applications. It is designed for continuous monitoring and supports data integration with PLCs and SCADA systems.",
+    "id": "marv-ex-ir",
+    "name": "MARV Ex IR",
+    "shortDescription": "All-in-one extractive dust, moisture, and gas composition monitoring system for dry and wet industrial processes.",
+    "longDescription": "The MARV Ex IR is an all-in-one extractive, isokinetic, and temperature-controlled continuous monitoring system designed for precise measurement of dust concentration, moisture content, and gas composition in industrial stacks. It is suitable for both dry and wet processes and ensures reliable operation under harsh process and ambient conditions. The system features a heated sampling probe to vaporize moisture, an air or nitrogen-purged optical sensor module, and an integrated PLC, all housed in a weather-proof, powder-coated steel enclosure. Measurement is performed using optical forward scattering for dust detection and infrared absorption for moisture and gas composition analysis, enabling accurate and continuous emissions monitoring.",
     "features": [
-      "High-accuracy temperature and humidity sensing",
-      "Continuous monitoring",
-      "Easy integration with control systems",
-      "Rugged industrial design"
+      "Simultaneous measurement of dust, moisture, and gas composition",
+      "Heated sampling probe for continuous moisture vaporization",
+      "Optical forward scattering dust measurement",
+      "Infrared absorption measurement for moisture and gas composition",
+      "Air or N₂ purged optical sensor module",
+      "Extractive and isokinetic sampling design",
+      "Integrated PLC with remote communication interfaces",
+      "Weather-proof IP65 steel enclosure"
     ],
     "applications": [
       {
-        "process": "Factory Automation",
-        "description": "Monitor environmental conditions in production facilities."
+        "process": "Industrial stacks (dry processes)",
+        "description": "Continuous monitoring of dust concentration and gas composition in dry flue gas streams.",
+        "conditions": {
+          "temperature": "Up to 200°C",
+          "gasVelocity": "5–35 m/s"
+        }
+      },
+      {
+        "process": "Industrial stacks (wet or condensing processes)",
+        "description": "Simultaneous measurement of dust, moisture, and gas composition after scrubbers or in moisture-saturated gas streams.",
+        "conditions": {
+          "temperature": "Up to 200°C",
+          "humidity": "Up to 40%"
+        }
       }
     ],
-    "certifications": ["CE Certified", "RoHS Compliant"],
-    "imageUrls": ["/hero-cycle/stock-2.jpg", "/hero-cycle/stock-3.jpg"],
+    "certifications": [],
+    "imageUrls": ["/hero-cycle/stock-0.jpg", "/hero-cycle/stock-1.jpg"],
     "price": ""
   },
   {
-    "id": "product-3",
-    "name": "Gas Flow Meter G3",
-    "shortDescription": "Precision gas flow meter for industrial process control.",
-    "longDescription": "The Gas Flow Meter G3 ensures precise flow measurements for a variety of gases. It is suitable for both high and low-pressure applications.",
+    "id": "marv-2ex-ir",
+    "name": "MARV 2Ex IR",
+    "shortDescription": "All-in-one extractive dust, moisture, and gas composition monitoring system for ATEX Zone 1/2 explosive atmospheres.",
+    "longDescription": "The MARV 2Ex IR is an all-in-one extractive, isokinetic, and temperature-controlled continuous monitoring system designed for simultaneous measurement of dust concentration, moisture content, and gas composition in industrial stacks located in explosive atmospheres. Certified for ATEX Zone 1/2 applications, the system uses a nitrogen-heated sampling probe, nitrogen-purged optical sensor module, and an integrated PLC housed in a weather-proof, powder-coated steel enclosure. A protective nitrogen overpressure prevents the formation of explosive gas atmospheres inside the analyzer. Measurement is based on optical forward scattering for dust detection and infrared absorption for moisture and gas composition analysis, ensuring reliable and accurate monitoring in dry and wet process conditions.",
     "features": [
-      "Accurate flow measurement",
-      "Supports multiple gas types",
-      "Digital output compatible with PLCs",
-      "Compact and durable design"
+      "ATEX-compliant design for Zone 1/2 explosive atmospheres",
+      "Simultaneous measurement of dust, moisture, and gas composition",
+      "Isokinetic sampling under variable flow conditions",
+      "Nitrogen-heated sampling probe for moisture vaporization",
+      "N₂-purged optical sensor module with protective gas overpressure",
+      "Automatic dust filter back-purge for pump protection",
+      "Long maintenance intervals due to isolated sample stream",
+      "PLC visualization software with local HMI (optional) and Web HMI",
+      "Infrared and visible optical system covering 200 nm to 20,000 nm"
     ],
     "applications": [
       {
-        "process": "Chemical Processing",
-        "description": "Monitor and control gas flows in chemical reactors and pipelines."
-      }
-    ],
-    "certifications": ["ISO 9001", "CE Certified"],
-    "imageUrls": ["/hero-cycle/stock-1.jpg", "/hero-cycle/stock-4.jpg"],
-    "price": ""
-  },
-  {
-    "id": "product-4",
-    "name": "Optical Particle Monitor OPM-5",
-    "shortDescription": "High-sensitivity particle monitor for industrial environments.",
-    "longDescription": "The OPM-5 provides real-time monitoring of airborne particles. It is ideal for clean rooms, laboratories, and industrial facilities where dust control is critical.",
-    "features": [
-      "Real-time particle monitoring",
-      "High sensitivity and low detection limits",
-      "Data logging and reporting",
-      "Durable and easy to install"
-    ],
-    "applications": [
+        "process": "BFG (Blast Furnace Gas)",
+        "description": "Measurement of dust, moisture, and CO/CO₂/CH₄ concentrations before reuse of blast furnace gas in gas turbines or boilers under explosive atmosphere conditions.",
+        "conditions": {
+          "temperature": "80°C",
+          "humidity": "100%",
+          "typicalGasComposition": {
+            "CO": "20–30%",
+            "CO2": "12–20%",
+            "H2": "1–4%",
+            "CH4": "Up to 0.5%",
+            "N2": "Balance"
+          }
+        }
+      },
       {
-        "process": "Air Quality Monitoring",
-        "description": "Measure and report airborne particle concentrations in controlled environments."
+        "process": "BOF (Basic Oxygen Furnace / Linz-Donawitz)",
+        "description": "Continuous emission monitoring of dust, moisture, and CO/CO₂ concentrations in converter flue gas within ATEX-regulated environments.",
+        "conditions": {
+          "temperature": "70°C",
+          "pressure": "0.95–1.023 Bar Abs.",
+          "gasVelocity": "5–30 m/s",
+          "humidity": "100%",
+          "typicalGasComposition": {
+            "CO": "55–60%",
+            "CO2": "12–18%",
+            "O2": "0.1–0.3%",
+            "N2": "Balance"
+          }
+        }
       }
     ],
-    "certifications": ["CE Certified", "ISO 14644 Compliant"],
-    "imageUrls": ["/hero-cycle/stock-3.jpg", "/hero-cycle/stock-0.jpg"],
+    "certifications": [],
+    "imageUrls": ["/hero-cycle/stock-0.jpg", "/hero-cycle/stock-1.jpg"],
     "price": ""
   }
 ]
