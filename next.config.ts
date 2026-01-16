@@ -4,10 +4,13 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 
   images: {
-    unoptimized: false,
+    unoptimized: true, // Cloudflare Pages requires unoptimized images
   },
 
   typedRoutes: true,
+
+  // Output standalone for better Cloudflare compatibility
+  output: 'standalone',
 };
 
 export default nextConfig;

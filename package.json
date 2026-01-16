@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "preview:worker": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy:worker": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "^16.0.7",
     "react": "latest",
     "react-dom": "latest",
     "react-google-recaptcha-v3": "^1.11.0",
@@ -17,11 +17,13 @@
     "resend": "^6.5.2"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.14.8",
     "@types/node": "latest",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "eslint": "latest",
     "eslint-config-next": "latest",
-    "prettier": "latest"
+    "prettier": "latest",
+    "wrangler": "^4.59.2"
   }
 }
