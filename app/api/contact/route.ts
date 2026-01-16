@@ -2,7 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { checkRateLimit } from './rate-limit';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend lazily to avoid build-time errors
+function getResendClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    throw new Error('RESEND_API_KEY is not configured');
+  }
+  return new Resend(apiKey);
+}
 
 async function verifyRecaptcha(token: string): Promise<boolean> {
   const secretKey = process.env.RECAPTCHA_SECRET_KEY;
@@ -263,6 +270,7 @@ Reply directly to this email to respond to ${firstName}.
     `.trim();
 
     // Send email using Resend
+    const resend = getResendClient();
     const { data, error } = await resend.emails.send({
       from: 'MARVILON contact form <onboarding@resend.dev>',
       to: ['otherbadeng@gmail.com'],
