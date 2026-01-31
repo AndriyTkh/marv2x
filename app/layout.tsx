@@ -2,6 +2,7 @@ import './globals.css';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://marvilon.com'),
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header /> {/* Could be server component since no toggle needed */}
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
