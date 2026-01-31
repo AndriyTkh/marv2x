@@ -6,7 +6,6 @@ import KeyCapabilities from '@/components/KeyCapabilities/KeyCapabilities';
 import Applications from '@/components/Applications/Applications';
 import Compliance from '@/components/Compliance/Compliance';
 import WhyMarvilon from '@/components/WhyMarvilon/WhyMarvilon';
-import TechnicalVisual from '@/components/TechnicalVisual/TechnicalVisual';
 import Technology from '@/components/Technology/Technology';
 import ProductList from '@/components/Products/Products';
 import About from '@/components/About/About';
@@ -63,19 +62,18 @@ export default function HomePage() {
       <TrustBar />
       <ProblemSolution />
       <HowItWorks />
-      <KeyCapabilities />
+      {/* <Technology /> */}
+      {/* <KeyCapabilities /> */}
       <Applications />
       <Compliance />
+      <About />
       <WhyMarvilon />
-      <TechnicalVisual />
-      <Technology />
       <ProductList
         limit={3}
         showViewAll
         title="Featured Products"
         description="Explore our selection of industry-leading environmental measurement solutions."
       />
-      <About />
       <FinalCTA />
     </>
   );

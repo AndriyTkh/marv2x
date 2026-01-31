@@ -20,7 +20,7 @@ export default function HowItWorks() {
       number: '3',
       title: 'Simultaneous multi-parameter detection',
       description:
-        'This enables concurrent measurement of gas components, dust, and moisture—without switching instruments or sampling delays.',
+        'This enables concurrent measurement of CO, CO₂, NO, NO₂, SO₂, NH₃, CH₄, particulate matter, and moisture — without switching instruments or sampling delays.',
     },
     {
       number: '4',
@@ -54,7 +54,7 @@ export default function HowItWorks() {
 
           <div className={styles.imageContainer}>
             <Image
-              src="/tech/marv2x_3d_render.jpg"
+              src="/products/zone_1_3.png"
               alt="Marvilon optical measurement system technical diagram"
               width={600}
               height={450}

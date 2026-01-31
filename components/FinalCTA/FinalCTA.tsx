@@ -17,9 +17,9 @@ export default function FinalCTA() {
             <Link href="/contacts" className={styles.ctaPrimary}>
               Talk to a measurement expert
             </Link>
-            <Link href="/products" className={styles.ctaSecondary}>
+            {/* <Link href="/products" className={styles.ctaSecondary}>
               Request technical documentation
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

@@ -23,16 +23,13 @@
 }
 
 .reasonsGrid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: var(--sp-5);
-  justify-content: center;
+  justify-items: center;
+  grid-template-columns: 1fr; /* 1 by default */
 }
 
 .reasonCard {
-  flex: 1 1 280px;
-  min-width: 280px;
-  max-width: 350px;
   background-color: white;
   padding: var(--sp-5);
   border-radius: var(--radius-lg);
@@ -98,6 +95,13 @@
 }
 
 /* Mobile */
+/* ≥ 640px → 2 columns */
+@media (min-width: 640px) {
+  .reasonsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .whyMarvilon {
     padding: var(--sp-5) 0;
@@ -133,5 +137,12 @@
 
   .title {
     font-size: 1.8rem;
+  }
+}
+
+/* ≥ 1100px → 4 columns */
+@media (min-width: 1100px) {
+  .reasonsGrid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

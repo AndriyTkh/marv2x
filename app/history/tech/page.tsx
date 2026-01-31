@@ -62,7 +62,7 @@ export default function TechnologyPage() {
             </div>
             <div className={styles.imageWrapper}>
               <Image
-                src="/tech/marv2x_front_view.jpg"
+                src="/products/zone_1_2.png"
                 alt="Marvilon optical measurement system front view"
                 width={800}
                 height={600}

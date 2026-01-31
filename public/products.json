@@ -32,7 +32,13 @@
       }
     ],
     "certifications": [],
-    "imageUrls": ["/hero-cycle/stock-0.jpg", "/hero-cycle/stock-1.jpg"],
+    "imageUrls": [
+      "/products/zone_1_0.png",
+      "/products/zone_1_1.png",
+      "/products/zone_1_2.png",
+      "/products/zone_1_3.png",
+      "/products/zone_1_4.png"
+    ],
     "price": ""
   },
   {
@@ -69,7 +75,7 @@
       }
     ],
     "certifications": [],
-    "imageUrls": ["/hero-cycle/stock-0.jpg", "/hero-cycle/stock-1.jpg"],
+    "imageUrls": ["/products/marv_ex.png"],
     "price": ""
   },
   {
@@ -122,7 +128,12 @@
       }
     ],
     "certifications": [],
-    "imageUrls": ["/hero-cycle/stock-0.jpg", "/hero-cycle/stock-1.jpg"],
+    "imageUrls": [
+      "/products/zone_2_0.png",
+      "/products/zone_2_1.png",
+      "/products/zone_2_2.png",
+      "/products/zone_2_3.png"
+    ],
     "price": ""
   }
 ]
