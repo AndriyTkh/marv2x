@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import styles from './ImageGallery.module.css';
+import blurMap from '@/blur.json';
 
 interface ImageGalleryProps {
   images: string[];
@@ -26,12 +27,22 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
 
   return (
     <div className={styles.mainImageContainer}>
-      <Image
+      {/* <Image
         src={images[selectedIndex]}
         alt={`${productName} - Image ${selectedIndex + 1}`}
         fill
         priority
         className={styles.mainImage}
+      /> */}
+      <Image
+        src={images[selectedIndex]}
+        alt={`${productName} - Image ${selectedIndex + 1}`}
+        fill
+        placeholder="blur"
+        blurDataURL={blurMap[images[selectedIndex]]}
+        sizes="(max-width: 768px) 100vw, 600px"
+        className={styles.mainImage}
+        priority
       />
 
       {/* Navigation Arrows */}

@@ -2,7 +2,9 @@
   "name": "environmental-company-site",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
+    "prebuild": "node public/gen_low_img.js",
     "dev": "next dev",
     "build": "next build",
     "preview:worker": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
@@ -15,7 +17,8 @@
     "react-dom": "latest",
     "react-google-recaptcha-v3": "^1.11.0",
     "react-icons": "^5.5.0",
-    "resend": "^6.5.2"
+    "resend": "^6.5.2",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@opennextjs/cloudflare": "^1.14.8",
