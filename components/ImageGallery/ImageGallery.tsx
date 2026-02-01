@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import styles from './ImageGallery.module.css';
 import blurMap from '@/blur.json';
+import Head from 'next/head';
 
 interface ImageGalleryProps {
   images: string[];
@@ -13,6 +14,12 @@ interface ImageGalleryProps {
 const typedBlurMap = blurMap as Record<string, string>;
 
 export default function ImageGallery({ images, productName }: ImageGalleryProps) {
+  <Head>
+    {images.map((src) => (
+      <link key={src} rel="preload" as="image" href={src} />
+    ))}
+  </Head>;
+
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   if (!images || images.length === 0) {
