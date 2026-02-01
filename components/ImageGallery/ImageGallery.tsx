@@ -29,14 +29,14 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
 
   return (
     <div className={styles.mainImageContainer}>
-      {/* <Image
+      <Image
         src={images[selectedIndex]}
         alt={`${productName} - Image ${selectedIndex + 1}`}
         fill
         priority
         className={styles.mainImage}
-      /> */}
-      <Image
+      />
+      {/* <Image
         src={images[selectedIndex]}
         alt={`${productName} - Image ${selectedIndex + 1}`}
         fill
@@ -45,7 +45,7 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
         sizes="(max-width: 768px) 100vw, 600px"
         className={styles.mainImage}
         priority
-      />
+      /> */}
 
       {/* Navigation Arrows */}
       {images.length > 1 && (
