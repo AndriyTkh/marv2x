@@ -32,13 +32,7 @@
       }
     ],
     "certifications": [],
-    "imageUrls": [
-      "/products/zone_1_0.png",
-      "/products/zone_1_1.png",
-      "/products/zone_1_2.png",
-      "/products/zone_1_3.png",
-      "/products/zone_1_4.png"
-    ],
+    "imageUrls": ["/products/MARV2EX_1.png", "/products/MARV2EX_2.png", "/products/MARV2EX_3.png"],
     "price": ""
   },
   {
@@ -75,7 +69,11 @@
       }
     ],
     "certifications": [],
-    "imageUrls": ["/products/marv_ex.png"],
+    "imageUrls": [
+      "/products/MARVEXIR_1.png",
+      "/products/MARVEXIR_2.png",
+      "/products/MARVEXIR_3.png"
+    ],
     "price": ""
   },
   {
@@ -129,10 +127,9 @@
     ],
     "certifications": [],
     "imageUrls": [
-      "/products/zone_2_0.png",
-      "/products/zone_2_1.png",
-      "/products/zone_2_2.png",
-      "/products/zone_2_3.png"
+      "/products/MARV2EXIR_1.png",
+      "/products/MARV2EXIR_2.png",
+      "/products/MARV2EXIR_3.png"
     ],
     "price": ""
   }
