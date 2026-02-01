@@ -10,6 +10,8 @@ interface ImageGalleryProps {
   productName: string;
 }
 
+const typedBlurMap = blurMap as Record<string, string>;
+
 export default function ImageGallery({ images, productName }: ImageGalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -39,7 +41,7 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
         alt={`${productName} - Image ${selectedIndex + 1}`}
         fill
         placeholder="blur"
-        blurDataURL={blurMap[images[selectedIndex]]}
+        blurDataURL={typedBlurMap[images[selectedIndex]]}
         sizes="(max-width: 768px) 100vw, 600px"
         className={styles.mainImage}
         priority
