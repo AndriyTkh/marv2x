@@ -1,55 +1,69 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import styles from './Hero.module.css';
+
+const images = [
+  '/hero-cycle/stock-0',
+  '/hero-cycle/stock-1',
+  '/hero-cycle/stock-2',
+  '/hero-cycle/stock-3',
+];
 
 export default function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const images = [
-    '/hero-cycle/stock-0.jpg',
-    '/hero-cycle/stock-1.jpg',
-    '/hero-cycle/stock-2.jpg',
-    '/hero-cycle/stock-3.jpg',
-    '/hero-cycle/stock-4.jpg',
-  ];
 
   const mainHeading = 'MARVILON';
   const subheading =
     'Integrated Optical measuring systems for continuous industrial process and emissions monitoring.';
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => {
-        return (prev + 1) % images.length;
-      });
-    }, 5000); // Change image every 5 seconds
+    const start = setTimeout(() => {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((i) => (i + 1) % images.length);
+      }, 5000);
 
-    return () => clearInterval(interval);
-  }, [images.length]);
+      return () => clearInterval(interval);
+    }, 1500);
+
+    return () => clearTimeout(start);
+  }, []);
 
   return (
     <section className={styles.hero}>
-      {/* Background Image with Overlay */}
+      {/* Background Images */}
       <div className={styles.backgroundContainer}>
-        {images.map((image, index) => {
-          return (
-            <div
-              key={image}
-              className={`${styles.imageWrapper} ${index !== currentImageIndex ? styles.hidden : ''}`}
-            >
-              <Image
-                src={image}
-                alt="Environmental monitoring"
-                fill
-                priority={index === currentImageIndex}
-                quality={75}
-                className={`${styles.backgroundImage}`}
-              />
-            </div>
-          );
-        })}
+        {images.map((base, index) => (
+          <div
+            key={base}
+            className={`${styles.imageWrapper} ${index !== currentImageIndex ? styles.hidden : ''}`}
+          >
+            <img
+              alt="Environmental monitoring"
+              src={`${base} (2).avif`} // fallback (highest)
+              srcSet={`
+                ${base}.avif 480w,
+                ${base}(1).avif 768w,
+                ${base}(2).avif 1280w
+              `}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              fetchPriority={index === 0 ? 'high' : 'auto'}
+              loading={index === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+              className={styles.backgroundImage}
+            />
+
+            {/* <Image
+              alt="Environmental monitoring"
+              fill
+              fetchPriority={index === 0 ? 'high' : 'auto'}
+              loading={index === 0 ? 'eager' : 'lazy'}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              src={`${base} (2).avif`}
+              className={styles.backgroundImage}
+            /> */}
+          </div>
+        ))}
         <div className={styles.overlay} />
       </div>
 
@@ -59,7 +73,6 @@ export default function Hero() {
           <h1 className={styles.title}>{mainHeading}</h1>
           <p className={styles.catchPhrase}>{subheading}</p>
 
-          {/* Key Benefits */}
           <div className={styles.benefits}>
             <ul className={styles.benefitsList}>
               <li>One system for complete process insight</li>
@@ -68,7 +81,6 @@ export default function Hero() {
             </ul>
           </div>
 
-          {/* CTAs */}
           <div className={styles.ctaGroup}>
             <a href="/contacts" className={styles.ctaPrimary}>
               Talk to a measurement expert
@@ -80,7 +92,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Image Indicators */}
+      {/* Indicators */}
       <div className={styles.indicators}>
         {images.map((_, index) => (
           <button

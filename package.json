@@ -4,7 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prebuild": "node public/gen_low_img.js",
     "dev": "next dev",
     "build": "next build",
     "preview:worker": "opennextjs-cloudflare build && opennextjs-cloudflare preview",

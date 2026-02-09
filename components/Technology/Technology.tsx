@@ -31,7 +31,7 @@ export default function Technology() {
             <h2 className={styles.title}>Optical Measurement Technology</h2>
             <div className={styles.imageWrapper}>
               <Image
-                src="/products/zone_2_3.png"
+                src="/products/zone_2_3.webp"
                 alt="Marvilon optical measurement system"
                 width={600}
                 height={450}

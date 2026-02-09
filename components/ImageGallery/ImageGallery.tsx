@@ -3,15 +3,12 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import styles from './ImageGallery.module.css';
-import blurMap from '@/blur.json';
 import Head from 'next/head';
 
 interface ImageGalleryProps {
   images: string[];
   productName: string;
 }
-
-const typedBlurMap = blurMap as Record<string, string>;
 
 export default function ImageGallery({ images, productName }: ImageGalleryProps) {
   <Head>

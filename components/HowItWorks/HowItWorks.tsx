@@ -54,7 +54,7 @@ export default function HowItWorks() {
 
           <div className={styles.imageContainer}>
             <Image
-              src="/products/zone_1_3.png"
+              src="/products/zone_1_3.webp"
               alt="Marvilon optical measurement system technical diagram"
               width={600}
               height={450}
