@@ -118,8 +118,8 @@ export default function TechnologyPage() {
         {/* S-3: Video centered */}
         <section className={styles.section}>
           <div className={styles.videoWrapper}>
-            <video controls className={styles.video} poster="/tech/marv2x_3d_render.jpg">
-              <source src="/tech/marv2x_animation.mp4" type="video/mp4" />
+            <video controls className={styles.video}>
+              <source src="/video/TechLoop.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
