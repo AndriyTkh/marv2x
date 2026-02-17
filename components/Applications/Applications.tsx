@@ -50,7 +50,7 @@ export default function Applications() {
         </div>
 
         <div className={styles.cta}>
-          <Link href="/products" className={styles.ctaButton}>
+          <Link href="/applications" className={styles.ctaButton}>
             View applications →
           </Link>
         </div>

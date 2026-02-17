@@ -15,6 +15,7 @@ export default function Header() {
     { href: '/products', label: 'Products' },
     { href: '/history/company', label: 'About' },
     { href: '/history/tech', label: 'Technology' },
+    { href: '/applications', label: 'Applications' },
     { href: '/contacts', label: 'Contacts' },
   ] as const;
 
