@@ -6,27 +6,33 @@ export default function HowItWorks() {
   const steps = [
     {
       number: '1',
+      title: 'Simultaneous multi-parameter detection',
+      description:
+        'This enables concurrent measurement of CO, CO₂, NO, NO₂, NH₃, CH₄, particulate matter, and moisture — without switching instruments or sampling delays.',
+    },
+    {
+      number: '2',
       title: 'High-pressure optical cell',
       description:
         'At the core of the system is a robust high-pressure optical cell engineered for high temperature, high pressure, and high sample flow rates.',
     },
     {
-      number: '2',
-      title: 'UV/Vis and infrared spectroscopy',
-      description:
-        'By combining UV/Vis and non-dispersive infrared (NDIR) absorption, the system measures across visible and infrared ranges within a single optical path.',
-    },
-    {
       number: '3',
-      title: 'Simultaneous multi-parameter detection',
+      title: 'Visible and infrared spectroscopy',
       description:
-        'This enables concurrent measurement of CO, CO₂, NO, NO₂, SO₂, NH₃, CH₄, particulate matter, and moisture — without switching instruments or sampling delays.',
+        'By combining visible-light and non-dispersive infrared (NDIR) absorption, the system measures across visible and infrared ranges within a single optical path.',
     },
     {
       number: '4',
       title: 'Real-time data and remote monitoring',
       description:
         'Measurement data is available continuously and in real time, supporting process control, optimization, and emissions compliance, locally and remotely.',
+    },
+    {
+      number: '5',
+      title: 'Automated calibration (Optional)',
+      description:
+        'Automated reference measurement and field calibration with the use of certified optical filters scheduled from 1 hour period for 100% guarantee of true measurements.',
     },
   ];
 

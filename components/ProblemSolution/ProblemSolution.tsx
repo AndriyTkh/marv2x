@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './ProblemSolution.module.css';
 
 export default function ProblemSolution() {
@@ -50,17 +51,35 @@ export default function ProblemSolution() {
             One integrated optical system. Complete process insight.
           </h2>
           <div className={styles.highlightContainer}>
-            <p className={styles.highlightDescription}>
-              Marvilon delivers integrated optical measurement that brings all critical process and
-              emissions parameters into a single system. By simultaneously tracking multiple
-              components directly in the process, the solution provides continuous, real-time
-              visibility without compromise.
-            </p>
-            <p className={styles.highlightDescription}>
-              Unlike conventional analyzers, Marvilon's system measures gases, particulate matter,
-              and moisture at the same time, enabling precise process control, improved efficiency,
-              and reliable compliance monitoring.
-            </p>
+            <div className={styles.dustMonitorImage}>
+              <Image
+                src="/products/dust_monitor.webp"
+                alt="Marvilon dust monitor system"
+                width={1200}
+                height={800}
+                className={styles.productImage}
+              />
+            </div>
+            <div>
+              <p className={styles.highlightDescription}>
+                Marvilon delivers integrated optical measurement that brings all critical process
+                and emissions parameters into a single system.{' '}
+                <strong>
+                  By simultaneously measuring gases, particulate matter, and moisture within the
+                  process itself,
+                </strong>{' '}
+                the solution provides continuous, real-time visibility without compromise.
+              </p>
+              <p className={styles.highlightDescription}>
+                Unlike conventional analyzers, Marvilon’s system performs{' '}
+                <strong>
+                  true multi-parameter measurement — tracking dust, gases, and humidity at the same
+                  time in one unified platform.
+                </strong>{' '}
+                This enables precise process control, improved efficiency, and reliable compliance
+                monitoring.
+              </p>
+            </div>
           </div>
 
           <Link href="/history/tech" className={styles.cta}>

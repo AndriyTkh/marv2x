@@ -11,8 +11,9 @@ export default function Compliance() {
       description: 'Proven performance where conventional analyzers fail',
     },
     {
-      title: 'ATEX-compliant design for hazardous areas',
-      description: 'Certified for Zone 1 & 2 explosive atmospheres',
+      title: 'Automated calibration',
+      description:
+        'Automated reference measurement and field calibration using certified optical filters, scheduled hourly for guaranteed accuracy.',
     },
     {
       title: 'Supports audit readiness and regulatory confidence',

@@ -12,24 +12,20 @@
 }
 
 .items {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: var(--sp-4);
   align-items: center;
-  justify-content: center;
-}
-
-.item {
-  flex: 1 1 250px;
-  min-width: 250px;
+  justify-items: center;
 }
 
 .item {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--sp-2);
   color: var(--champagne-mist);
   font-weight: 500;
+  text-align: center;
 }
 
 .checkmark {
@@ -63,6 +59,27 @@
   }
 }
 
+/* 1 per row (mobile) */
+@media (max-width: 640px) {
+  .items {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 2 per row (tablet) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 4 per row (desktop) */
+@media (min-width: 1025px) {
+  .items {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .trustBar {
@@ -78,8 +95,7 @@
   .item {
     justify-content: center;
     flex: none;
-    min-wid
-
+  }
   .text {
     font-size: 0.9rem;
   }

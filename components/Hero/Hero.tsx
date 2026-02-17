@@ -36,7 +36,7 @@ export default function Hero() {
             <ul className={styles.benefitsList}>
               <li>One system for complete process insight</li>
               <li>Real-time multi-parameter measurement</li>
-              <li>ATEX Zone 1 & 2 certified for hazardous areas</li>
+              <li>ATEX Zone 1 & 2 compliant for hazardous environments</li>
             </ul>
           </div>
 

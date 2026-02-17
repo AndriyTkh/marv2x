@@ -63,14 +63,15 @@ export default function HomePage() {
       {/* <KeyCapabilities /> */}
       <Applications />
       <Compliance />
-      <About />
-      <WhyMarvilon />
       <ProductList
         limit={3}
         showViewAll
         title="Featured Products"
         description="Explore our selection of industry-leading environmental measurement solutions."
       />
+      <About />
+      <WhyMarvilon />
+
       <FinalCTA />
     </>
   );

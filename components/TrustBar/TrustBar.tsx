@@ -2,8 +2,8 @@ import styles from './TrustBar.module.css';
 
 export default function TrustBar() {
   const trustItems = [
-    'ATEX Zone 1 & 2 certified',
-    'Designed for hazardous and wet dust environments',
+    'ATEX Zone 1 & 2 compliant',
+    'Designed for wet processes',
     'Engineered for high pressure and high temperature',
     'Continuous industrial operation',
   ];

@@ -1,0 +1,262 @@
+.main {
+  min-height: 80vh;
+  padding: var(--sp-4) 0;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: var(--sp-2);
+  text-align: center;
+  color: var(--muted-teal);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--muted-tead-secondary);
+  margin-bottom: var(--sp-5);
+}
+
+.section {
+  padding: var(--sp-4) 0;
+  border-top: 2px solid var(--muted-teal);
+}
+
+.section h2 {
+  font-size: 2rem;
+  padding: var(--sp-4) 0;
+  color: var(--muted-teal);
+}
+
+.section h3 {
+  font-size: 1.5rem;
+  margin-bottom: var(--sp-3);
+  color: var(--muted-tead-secondary);
+}
+
+.section h4 {
+  font-size: 1.2rem;
+  margin-top: var(--sp-3);
+  margin-bottom: var(--sp-2);
+  color: var(--muted-tead-secondary);
+}
+
+.section p {
+  line-height: 1.8;
+  margin-bottom: var(--sp-3);
+}
+
+.section ul {
+  margin-bottom: var(--sp-3);
+}
+
+.section ul li {
+  margin-bottom: var(--sp-2);
+  line-height: 1.6;
+}
+
+/* Horizontal layouts */
+.horizontal {
+  display: flex;
+  gap: var(--sp-5);
+  align-items: start;
+  margin-bottom: var(--sp-4);
+}
+
+.textContent {
+  flex: 1;
+}
+
+.specs {
+  background: var(--pale-sky);
+  padding: var(--sp-4);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--muted-teal);
+  margin-top: var(--sp-4);
+}
+
+.specs h4 {
+  margin-top: 0;
+}
+
+.specs ul {
+  margin-left: var(--sp-4);
+  list-style: disc;
+}
+
+.specs p {
+  margin-bottom: var(--sp-2);
+}
+
+.tableCaption {
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-top: var(--sp-2);
+}
+
+.imageWrapper {
+  flex: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.caption {
+  font-size: 0.9rem;
+  font-style: italic;
+  text-align: center;
+  margin-top: var(--sp-2);
+  color: var(--muted-tead-secondary);
+}
+
+/* Challenge list */
+.challengeList {
+  margin-left: var(--sp-4);
+  list-style: disc;
+  margin-bottom: var(--sp-4);
+}
+
+.challengeList li {
+  margin-bottom: var(--sp-2);
+}
+
+/* Normalized list */
+.normalizedList {
+  margin-left: var(--sp-4);
+  list-style: disc;
+  margin-bottom: var(--sp-4);
+}
+
+/* Highlight box */
+.highlight {
+  background: var(--pale-sky);
+  padding: var(--sp-4);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--muted-tead-secondary);
+  margin-top: var(--sp-4);
+}
+
+.highlight p {
+  margin-bottom: var(--sp-2);
+}
+
+.highlight p:last-child {
+  margin-bottom: 0;
+}
+
+.highlight strong {
+  color: var(--muted-teal);
+  font-size: 1.1rem;
+}
+
+/* Grid layout for applications */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4);
+  margin-top: var(--sp-4);
+}
+
+.gridItem {
+  padding: var(--sp-4);
+  background: var(--pale-sky);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--muted-tead-secondary);
+  text-align: center;
+}
+
+.gridItem strong {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--muted-teal);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .title {
+    color: var(--khaki-beige);
+  }
+
+  .subtitle {
+    color: var(--khaki-beige-secondary);
+  }
+
+  .section h2 {
+    color: var(--khaki-beige);
+  }
+
+  .section h3,
+  .section h4 {
+    color: var(--khaki-beige-secondary);
+  }
+
+  .caption {
+    color: var(--khaki-beige-secondary);
+  }
+
+  .specs {
+    background: rgba(115, 184, 199, 0.15);
+    border-left-color: var(--khaki-beige);
+  }
+
+  .highlight {
+    background: rgba(115, 184, 199, 0.15);
+    border-left-color: var(--khaki-beige-secondary);
+  }
+
+  .highlight strong {
+    color: var(--khaki-beige);
+  }
+
+  .gridItem {
+    background: rgba(115, 184, 199, 0.15);
+    border-left-color: var(--khaki-beige-secondary);
+  }
+
+  .gridItem strong {
+    color: var(--khaki-beige);
+  }
+
+  .imageWrapper {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .horizontal {
+    flex-direction: column;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .section h2 {
+    font-size: 1.5rem;
+  }
+
+  .section h3 {
+    font-size: 1.3rem;
+  }
+
+  .horizontal {
+    gap: var(--sp-4);
+  }
+}
