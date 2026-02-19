@@ -1,0 +1,50 @@
+.specButton {
+  display: inline-block;
+  padding: var(--sp-3) var(--sp-5);
+  background-color: var(--khaki-beige);
+  color: var(--black);
+  border: 2px solid var(--khaki-beige);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.specButton:hover {
+  background-color: transparent;
+  color: var(--khaki-beige);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.specButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.specButton:focus-visible {
+  outline: 3px solid var(--muted-teal);
+  outline-offset: 2px;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .specButton {
+    background-color: var(--pale-sky);
+    color: var(--black);
+    border-color: var(--pale-sky);
+  }
+
+  .specButton:hover {
+    background-color: transparent;
+    color: var(--pale-sky);
+  }
+
+  .specButton:focus-visible {
+    outline-color: var(--khaki-beige);
+  }
+}

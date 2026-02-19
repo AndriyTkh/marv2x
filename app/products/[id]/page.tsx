@@ -3,10 +3,10 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import products from '@/public/products.json';
 import ImageGallery from '@/components/ImageGallery/ImageGallery';
+import ProductPageClient from './ProductPageClient.tsx';
 import styles from './product.module.css';
 import type { Metadata } from 'next';
-
-type Product = (typeof products)[0];
+import type { Product } from './types';
 
 export async function generateStaticParams() {
   return products.map((product) => ({
@@ -90,85 +90,8 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             <ImageGallery images={product.imageUrls} productName={product.name} />
           </div>
 
-          {/* Product Info */}
-          <div className={styles.infoContainer}>
-            <h1 className={styles.title}>{product.name}</h1>
-            <div className={styles.description}>
-              {product.longDescription.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
-
-            {/* Price */}
-            {product.price && (
-              <div className={styles.priceSection}>
-                <span className={styles.price}>{product.price}</span>
-              </div>
-            )}
-
-            {/* CTA Button */}
-            <Link href="/contacts" className={styles.ctaButton}>
-              Request a Quote
-            </Link>
-
-            {/* Features */}
-            {product.features && product.features.length > 0 && (
-              <div className={styles.characteristics}>
-                <h2 className={styles.charTitle}>Key Features</h2>
-                <ul className={styles.featureList}>
-                  {product.features.map((feature, index) => (
-                    <li key={index} className={styles.featureItem}>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Applications */}
-            {product.applications && product.applications.length > 0 && (
-              <div className={styles.characteristics}>
-                <h2 className={styles.charTitle}>Applications</h2>
-                <div className={styles.applicationsList}>
-                  {product.applications.map((app, index) => (
-                    <div key={index} className={styles.applicationItem}>
-                      <h3 className={styles.applicationProcess}>{app.process}</h3>
-                      <p className={styles.applicationDescription}>{app.description}</p>
-                      {'conditions' in app && app.conditions && (
-                        <div className={styles.conditions}>
-                          <strong>Conditions:</strong>
-                          <ul className={styles.conditionsList}>
-                            {Object.entries(app.conditions).map(([key, value]) => (
-                              <li key={key}>
-                                {key
-                                  .replace(/([A-Z])/g, ' $1')
-                                  .replace(/^./, (str) => str.toUpperCase())}
-                                : {String(value)}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Certifications */}
-            {product.certifications && product.certifications.length > 0 && (
-              <div className={styles.characteristics}>
-                <h2 className={styles.charTitle}>Certifications</h2>
-                <div className={styles.certificationsList}>
-                  {product.certifications.map((cert, index) => (
-                    <span key={index} className={styles.certificationBadge}>
-                      {cert}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
+          {/* Product Info - Wrapped in Client Component */}
+          <ProductPageClient product={product} productId={id} />
         </section>
 
         {/* Related Products */}

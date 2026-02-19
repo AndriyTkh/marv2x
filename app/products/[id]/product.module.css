@@ -89,6 +89,12 @@
 
 /* ===================== CTA Button ===================== */
 
+.ctaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
 .ctaButton {
   display: inline-block;
   padding: var(--sp-3) var(--sp-5);

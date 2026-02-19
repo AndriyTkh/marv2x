@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, FormEvent, useRef, useEffect } from 'react';
+import { useState, FormEvent, useEffect } from 'react';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import styles from './ContactForm.module.css';
+import { ContactFormConfig, ContactFormData } from './types';
 
 interface FormData {
   firstName: string;
@@ -31,71 +32,89 @@ const MIN_MESSAGE_LENGTH = 20;
 const MAX_MESSAGE_LENGTH = 2000;
 const FORM_STORAGE_KEY = 'marvilon_contact_form_backup';
 
-// Validation patterns
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_REGEX = /^[\d\s\-\+\(\)]+$/;
 const POSTAL_CODE_REGEX = /^[A-Za-z0-9\s\-]+$/;
 const NAME_REGEX = /^[a-zA-Z\s\-']+$/;
 
-// Helper function to load initial form data from localStorage
+const EMPTY_FORM: FormData = {
+  firstName: '',
+  lastName: '',
+  company: '',
+  email: '',
+  phone: '',
+  country: '',
+  city: '',
+  postalCode: '',
+  topic: '',
+  message: '',
+};
+
 const getInitialFormData = (): FormData => {
-  if (typeof window === 'undefined') {
-    return {
-      firstName: '',
-      lastName: '',
-      company: '',
-      email: '',
-      phone: '',
-      country: '',
-      city: '',
-      postalCode: '',
-      topic: '',
-      message: '',
-    };
-  }
+  if (typeof window === 'undefined') return EMPTY_FORM;
 
   try {
     const savedData = localStorage.getItem(FORM_STORAGE_KEY);
-    if (savedData) {
-      return JSON.parse(savedData);
-    }
+    if (savedData) return JSON.parse(savedData);
   } catch (error) {
     console.error('Failed to load form data from localStorage:', error);
   }
 
-  return {
-    firstName: '',
-    lastName: '',
-    company: '',
-    email: '',
-    phone: '',
-    country: '',
-    city: '',
-    postalCode: '',
-    topic: '',
-    message: '',
-  };
+  return EMPTY_FORM;
 };
 
-export default function ContactForm() {
+export default function ContactForm(config?: ContactFormConfig) {
+  // Destructure config with defaults for backward compatibility
+  const {
+    visibleFields,
+    onSubmit: customOnSubmit,
+    hiddenFields = {},
+    submitButtonText = 'Send Message',
+    submitButtonLoadingText = 'Sending...',
+  } = config || {};
+
+  // Helper function to check if a field should be visible
+  // If no config provided, all fields are visible (backward compatibility)
+  const isFieldVisible = (fieldName: keyof FormData): boolean => {
+    if (!visibleFields) return true; // No config = show all fields
+    return visibleFields[fieldName as keyof typeof visibleFields] === true;
+  };
+
   const [formData, setFormData] = useState<FormData>(getInitialFormData);
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
-  const [honeypot, setHoneypot] = useState('');
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
-  const formLoadTime = useRef<number>(Date.now());
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   // Save form data to localStorage whenever it changes
+  // useEffect(() => {
+  //   try {
+  //     localStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(formData));
+  //   } catch (error) {
+  //     console.error('Failed to save form data to localStorage:', error);
+  //   }
+  // }, [formData]);
   useEffect(() => {
-    try {
-      localStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(formData));
-    } catch (error) {
-      console.error('Failed to save form data to localStorage:', error);
-    }
-  }, [formData]);
+    setFormData(getInitialFormData());
+  }, []);
+
+  useEffect(() => {
+    if (!visibleFields) return;
+
+    setFormData((prev) => {
+      const cleaned = { ...prev };
+
+      Object.keys(cleaned).forEach((key) => {
+        if (!isFieldVisible(key as keyof FormData)) {
+          cleaned[key as keyof FormData] = '';
+        }
+      });
+
+      return cleaned;
+    });
+  }, [visibleFields]);
 
   // Validation functions
   const validateField = (name: string, value: string): string | undefined => {
@@ -146,44 +165,33 @@ export default function ContactForm() {
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
-    let isValid = true;
+    const requiredFields: (keyof FormErrors)[] = [];
 
-    // Validate required fields
-    const requiredFields: (keyof FormErrors)[] = [
-      'firstName',
-      'lastName',
-      'company',
-      'email',
-      'message',
-    ];
+    // Build list of required fields based on visibility
+    if (isFieldVisible('firstName')) requiredFields.push('firstName');
+    if (isFieldVisible('lastName')) requiredFields.push('lastName');
+    if (isFieldVisible('company')) requiredFields.push('company');
+    if (isFieldVisible('email')) requiredFields.push('email');
+    if (isFieldVisible('message')) requiredFields.push('message');
 
     requiredFields.forEach((field) => {
       const error = validateField(field, formData[field]);
-      if (error) {
-        newErrors[field] = error;
-        isValid = false;
+      if (error) newErrors[field] = error;
+    });
+
+    // Validate optional fields if they have values and are visible
+    ['phone', 'postalCode'].forEach((field) => {
+      if (
+        isFieldVisible(field as keyof typeof visibleFields) &&
+        formData[field as keyof FormData]
+      ) {
+        const error = validateField(field, formData[field as keyof FormData]);
+        if (error) newErrors[field as keyof FormErrors] = error;
       }
     });
 
-    // Validate optional fields if they have values
-    if (formData.phone) {
-      const phoneError = validateField('phone', formData.phone);
-      if (phoneError) {
-        newErrors.phone = phoneError;
-        isValid = false;
-      }
-    }
-
-    if (formData.postalCode) {
-      const postalError = validateField('postalCode', formData.postalCode);
-      if (postalError) {
-        newErrors.postalCode = postalError;
-        isValid = false;
-      }
-    }
-
     setErrors(newErrors);
-    return isValid;
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleChange = (
@@ -191,50 +199,25 @@ export default function ContactForm() {
   ) => {
     const { name, value } = e.target;
 
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Real-time validation for touched fields
     if (touched[name]) {
       const error = validateField(name, value);
-      setErrors((prev) => ({
-        ...prev,
-        [name]: error,
-      }));
+      setErrors((prev) => ({ ...prev, [name]: error }));
     }
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-
-    setTouched((prev) => ({
-      ...prev,
-      [name]: true,
-    }));
-
-    const error = validateField(name, value);
-    setErrors((prev) => ({
-      ...prev,
-      [name]: error,
-    }));
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    // Mark all fields as touched
-    const allTouched = Object.keys(formData).reduce(
-      (acc, key) => {
-        acc[key] = true;
-        return acc;
-      },
-      {} as Record<string, boolean>,
-    );
-    setTouched(allTouched);
+    setTouched(Object.keys(formData).reduce((acc, key) => ({ ...acc, [key]: true }), {}));
 
-    // Validate all fields
     if (!validateForm()) {
       setStatus('error');
       setErrorMessage('Please fix the errors in the form before submitting');
@@ -244,74 +227,47 @@ export default function ContactForm() {
     setStatus('loading');
     setErrorMessage('');
 
-    // Honeypot check
-    if (honeypot) {
-      setStatus('error');
-      setErrorMessage('Invalid submission detected');
-      return;
-    }
-
-    // Time-based check
-    const timeSinceLoad = Date.now() - formLoadTime.current;
-    if (timeSinceLoad < 3000) {
-      setStatus('error');
-      setErrorMessage('Please take your time filling out the form');
-      return;
-    }
-
-    // Get reCAPTCHA token
-    if (!executeRecaptcha) {
-      setStatus('error');
-      setErrorMessage('reCAPTCHA not loaded. Please refresh the page.');
-      return;
-    }
-
     try {
+      // Get reCAPTCHA token
+      if (!executeRecaptcha) {
+        setStatus('error');
+        setErrorMessage('reCAPTCHA not loaded. Please refresh the page.');
+        return;
+      }
+
       const recaptchaToken = await executeRecaptcha('contact_form');
 
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          recaptchaToken,
-          timestamp: Date.now(),
-        }),
-      });
+      // Merge form data with hidden fields and reCAPTCHA token
+      const submissionData: ContactFormData = {
+        ...formData,
+        ...hiddenFields,
+        recaptchaToken,
+        timestamp: Date.now(),
+      };
 
-      const data = await response.json();
+      // Use custom onSubmit if provided, otherwise use default API submission
+      if (customOnSubmit) {
+        await customOnSubmit(submissionData);
+      } else {
+        // Default submission logic
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(submissionData),
+        });
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message');
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to send message');
+        }
       }
 
       setStatus('success');
-
-      // Clear form data
-      setFormData({
-        firstName: '',
-        lastName: '',
-        company: '',
-        email: '',
-        phone: '',
-        country: '',
-        city: '',
-        postalCode: '',
-        topic: '',
-        message: '',
-      });
+      setFormData(EMPTY_FORM);
       setErrors({});
       setTouched({});
-      formLoadTime.current = Date.now();
-
-      // Clear localStorage backup
-      try {
-        localStorage.removeItem(FORM_STORAGE_KEY);
-      } catch (error) {
-        console.error('Failed to clear form data from localStorage:', error);
-      }
+      localStorage.removeItem(FORM_STORAGE_KEY);
     } catch (error) {
       setStatus('error');
       setErrorMessage(error instanceof Error ? error.message : 'Something went wrong');
@@ -319,245 +275,277 @@ export default function ContactForm() {
   };
 
   const messageLength = formData.message.length;
-  const hasErrors = Object.keys(errors).some((key) => errors[key as keyof FormErrors]);
-  const isFormValid =
-    !hasErrors &&
-    formData.firstName &&
-    formData.lastName &&
-    formData.company &&
-    formData.email &&
-    formData.message;
+
+  // Check if form is valid based on visible fields
+  const isFormValid = (() => {
+    // Check required visible fields are filled and valid
+    if (isFieldVisible('firstName') && validateField('firstName', formData.firstName)) return false;
+    if (isFieldVisible('lastName') && validateField('lastName', formData.lastName)) return false;
+    if (isFieldVisible('company') && validateField('company', formData.company)) return false;
+    if (isFieldVisible('email') && validateField('email', formData.email)) return false;
+    if (isFieldVisible('message') && validateField('message', formData.message)) return false;
+
+    // Check optional fields if they have values
+    if (isFieldVisible('phone') && formData.phone && validateField('phone', formData.phone))
+      return false;
+    if (
+      isFieldVisible('postalCode') &&
+      formData.postalCode &&
+      validateField('postalCode', formData.postalCode)
+    )
+      return false;
+
+    return true;
+  })();
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      {/* Honeypot field */}
-      <input
-        type="text"
-        name="website"
-        value={honeypot}
-        onChange={(e) => setHoneypot(e.target.value)}
-        style={{ display: 'none' }}
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-      />
+      {(isFieldVisible('firstName') || isFieldVisible('lastName')) && (
+        <div className={styles.row}>
+          {isFieldVisible('firstName') && (
+            <div className={styles.field}>
+              <label htmlFor="firstName">
+                First Name <span className={styles.required}>*</span>
+              </label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                required
+                maxLength={50}
+                className={errors.firstName && touched.firstName ? styles.inputError : ''}
+                aria-invalid={errors.firstName && touched.firstName ? 'true' : 'false'}
+                aria-describedby={
+                  errors.firstName && touched.firstName ? 'firstName-error' : undefined
+                }
+              />
+              {errors.firstName && touched.firstName && (
+                <span id="firstName-error" className={styles.fieldError} role="alert">
+                  {errors.firstName}
+                </span>
+              )}
+            </div>
+          )}
 
-      <div className={styles.row}>
+          {isFieldVisible('lastName') && (
+            <div className={styles.field}>
+              <label htmlFor="lastName">
+                Last Name <span className={styles.required}>*</span>
+              </label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                required
+                maxLength={50}
+                className={errors.lastName && touched.lastName ? styles.inputError : ''}
+                aria-invalid={errors.lastName && touched.lastName ? 'true' : 'false'}
+                aria-describedby={
+                  errors.lastName && touched.lastName ? 'lastName-error' : undefined
+                }
+              />
+              {errors.lastName && touched.lastName && (
+                <span id="lastName-error" className={styles.fieldError} role="alert">
+                  {errors.lastName}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {isFieldVisible('company') && (
         <div className={styles.field}>
-          <label htmlFor="firstName">
-            First Name <span className={styles.required}>*</span>
+          <label htmlFor="company">
+            Company <span className={styles.required}>*</span>
           </label>
           <input
             type="text"
-            id="firstName"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            required
-            maxLength={50}
-            className={errors.firstName && touched.firstName ? styles.inputError : ''}
-            aria-invalid={errors.firstName && touched.firstName ? 'true' : 'false'}
-            aria-describedby={errors.firstName && touched.firstName ? 'firstName-error' : undefined}
-          />
-          {errors.firstName && touched.firstName && (
-            <span id="firstName-error" className={styles.fieldError} role="alert">
-              {errors.firstName}
-            </span>
-          )}
-        </div>
-
-        <div className={styles.field}>
-          <label htmlFor="lastName">
-            Last Name <span className={styles.required}>*</span>
-          </label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            required
-            maxLength={50}
-            className={errors.lastName && touched.lastName ? styles.inputError : ''}
-            aria-invalid={errors.lastName && touched.lastName ? 'true' : 'false'}
-            aria-describedby={errors.lastName && touched.lastName ? 'lastName-error' : undefined}
-          />
-          {errors.lastName && touched.lastName && (
-            <span id="lastName-error" className={styles.fieldError} role="alert">
-              {errors.lastName}
-            </span>
-          )}
-        </div>
-      </div>
-
-      <div className={styles.field}>
-        <label htmlFor="company">
-          Company <span className={styles.required}>*</span>
-        </label>
-        <input
-          type="text"
-          id="company"
-          name="company"
-          value={formData.company}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          required
-          maxLength={100}
-          className={errors.company && touched.company ? styles.inputError : ''}
-          aria-invalid={errors.company && touched.company ? 'true' : 'false'}
-          aria-describedby={errors.company && touched.company ? 'company-error' : undefined}
-        />
-        {errors.company && touched.company && (
-          <span id="company-error" className={styles.fieldError} role="alert">
-            {errors.company}
-          </span>
-        )}
-      </div>
-
-      <div className={styles.row}>
-        <div className={styles.field}>
-          <label htmlFor="email">
-            Email <span className={styles.required}>*</span>
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
+            id="company"
+            name="company"
+            value={formData.company}
             onChange={handleChange}
             onBlur={handleBlur}
             required
             maxLength={100}
-            className={errors.email && touched.email ? styles.inputError : ''}
-            aria-invalid={errors.email && touched.email ? 'true' : 'false'}
-            aria-describedby={errors.email && touched.email ? 'email-error' : undefined}
+            className={errors.company && touched.company ? styles.inputError : ''}
+            aria-invalid={errors.company && touched.company ? 'true' : 'false'}
+            aria-describedby={errors.company && touched.company ? 'company-error' : undefined}
           />
-          {errors.email && touched.email && (
-            <span id="email-error" className={styles.fieldError} role="alert">
-              {errors.email}
+          {errors.company && touched.company && (
+            <span id="company-error" className={styles.fieldError} role="alert">
+              {errors.company}
             </span>
           )}
         </div>
+      )}
 
+      {(isFieldVisible('email') || isFieldVisible('phone')) && (
+        <div className={styles.row}>
+          {isFieldVisible('email') && (
+            <div className={styles.field}>
+              <label htmlFor="email">
+                Email <span className={styles.required}>*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                required
+                maxLength={100}
+                className={errors.email && touched.email ? styles.inputError : ''}
+                aria-invalid={errors.email && touched.email ? 'true' : 'false'}
+                aria-describedby={errors.email && touched.email ? 'email-error' : undefined}
+              />
+              {errors.email && touched.email && (
+                <span id="email-error" className={styles.fieldError} role="alert">
+                  {errors.email}
+                </span>
+              )}
+            </div>
+          )}
+
+          {isFieldVisible('phone') && (
+            <div className={styles.field}>
+              <label htmlFor="phone">Phone</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                maxLength={20}
+                placeholder="+1 (555) 123-4567"
+                className={errors.phone && touched.phone ? styles.inputError : ''}
+                aria-invalid={errors.phone && touched.phone ? 'true' : 'false'}
+                aria-describedby={errors.phone && touched.phone ? 'phone-error' : undefined}
+              />
+              {errors.phone && touched.phone && (
+                <span id="phone-error" className={styles.fieldError} role="alert">
+                  {errors.phone}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {(isFieldVisible('country') || isFieldVisible('city') || isFieldVisible('postalCode')) && (
+        <div className={styles.rowThree}>
+          {isFieldVisible('country') && (
+            <div className={styles.field}>
+              <label htmlFor="country">Country</label>
+              <input
+                type="text"
+                id="country"
+                name="country"
+                value={formData.country}
+                onChange={handleChange}
+                maxLength={50}
+                placeholder="United States"
+              />
+            </div>
+          )}
+
+          {isFieldVisible('city') && (
+            <div className={styles.field}>
+              <label htmlFor="city">City</label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                maxLength={50}
+                placeholder="New York"
+              />
+            </div>
+          )}
+
+          {isFieldVisible('postalCode') && (
+            <div className={styles.field}>
+              <label htmlFor="postalCode">Postal Code</label>
+              <input
+                type="text"
+                id="postalCode"
+                name="postalCode"
+                value={formData.postalCode}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                maxLength={20}
+                placeholder="10001"
+                className={errors.postalCode && touched.postalCode ? styles.inputError : ''}
+                aria-invalid={errors.postalCode && touched.postalCode ? 'true' : 'false'}
+                aria-describedby={
+                  errors.postalCode && touched.postalCode ? 'postalCode-error' : undefined
+                }
+              />
+              {errors.postalCode && touched.postalCode && (
+                <span id="postalCode-error" className={styles.fieldError} role="alert">
+                  {errors.postalCode}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {isFieldVisible('topic') && (
         <div className={styles.field}>
-          <label htmlFor="phone">Phone</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
+          <label htmlFor="topic">Topic</label>
+          <select id="topic" name="topic" value={formData.topic} onChange={handleChange}>
+            <option value="">Select a topic</option>
+            <option value="general">General Inquiry</option>
+            <option value="product">Product Information</option>
+            <option value="support">Technical Support</option>
+            <option value="partnership">Partnership Opportunity</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      )}
+
+      {isFieldVisible('message') && (
+        <div className={styles.field}>
+          <label htmlFor="message">
+            Message <span className={styles.required}>*</span>
+            <span className={styles.charCount}>
+              {messageLength}/{MAX_MESSAGE_LENGTH}
+              {messageLength > 0 && messageLength < MIN_MESSAGE_LENGTH && (
+                <span className={styles.charCountWarning}> (min: {MIN_MESSAGE_LENGTH})</span>
+              )}
+            </span>
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows={6}
+            value={formData.message}
             onChange={handleChange}
             onBlur={handleBlur}
-            maxLength={20}
-            placeholder="+1 (555) 123-4567"
-            className={errors.phone && touched.phone ? styles.inputError : ''}
-            aria-invalid={errors.phone && touched.phone ? 'true' : 'false'}
-            aria-describedby={errors.phone && touched.phone ? 'phone-error' : undefined}
+            required
+            maxLength={MAX_MESSAGE_LENGTH}
+            placeholder="Please provide details about your inquiry..."
+            className={errors.message && touched.message ? styles.inputError : ''}
+            aria-invalid={errors.message && touched.message ? 'true' : 'false'}
+            aria-describedby={errors.message && touched.message ? 'message-error' : undefined}
           />
-          {errors.phone && touched.phone && (
-            <span id="phone-error" className={styles.fieldError} role="alert">
-              {errors.phone}
+          {errors.message && touched.message && (
+            <span id="message-error" className={styles.fieldError} role="alert">
+              {errors.message}
             </span>
           )}
         </div>
-      </div>
-
-      <div className={styles.rowThree}>
-        <div className={styles.field}>
-          <label htmlFor="country">Country</label>
-          <input
-            type="text"
-            id="country"
-            name="country"
-            value={formData.country}
-            onChange={handleChange}
-            maxLength={50}
-            placeholder="United States"
-          />
-        </div>
-
-        <div className={styles.field}>
-          <label htmlFor="city">City</label>
-          <input
-            type="text"
-            id="city"
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-            maxLength={50}
-            placeholder="New York"
-          />
-        </div>
-
-        <div className={styles.field}>
-          <label htmlFor="postalCode">Postal Code</label>
-          <input
-            type="text"
-            id="postalCode"
-            name="postalCode"
-            value={formData.postalCode}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            maxLength={20}
-            placeholder="10001"
-            className={errors.postalCode && touched.postalCode ? styles.inputError : ''}
-            aria-invalid={errors.postalCode && touched.postalCode ? 'true' : 'false'}
-            aria-describedby={
-              errors.postalCode && touched.postalCode ? 'postalCode-error' : undefined
-            }
-          />
-          {errors.postalCode && touched.postalCode && (
-            <span id="postalCode-error" className={styles.fieldError} role="alert">
-              {errors.postalCode}
-            </span>
-          )}
-        </div>
-      </div>
-
-      <div className={styles.field}>
-        <label htmlFor="topic">Topic</label>
-        <select id="topic" name="topic" value={formData.topic} onChange={handleChange}>
-          <option value="">Select a topic</option>
-          <option value="general">General Inquiry</option>
-          <option value="product">Product Information</option>
-          <option value="support">Technical Support</option>
-          <option value="partnership">Partnership Opportunity</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-
-      <div className={styles.field}>
-        <label htmlFor="message">
-          Message <span className={styles.required}>*</span>
-          <span className={styles.charCount}>
-            {messageLength}/{MAX_MESSAGE_LENGTH}
-            {messageLength > 0 && messageLength < MIN_MESSAGE_LENGTH && (
-              <span className={styles.charCountWarning}> (min: {MIN_MESSAGE_LENGTH})</span>
-            )}
-          </span>
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={6}
-          value={formData.message}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          required
-          maxLength={MAX_MESSAGE_LENGTH}
-          placeholder="Please provide details about your inquiry..."
-          className={errors.message && touched.message ? styles.inputError : ''}
-          aria-invalid={errors.message && touched.message ? 'true' : 'false'}
-          aria-describedby={errors.message && touched.message ? 'message-error' : undefined}
-        />
-        {errors.message && touched.message && (
-          <span id="message-error" className={styles.fieldError} role="alert">
-            {errors.message}
-          </span>
-        )}
-      </div>
+      )}
 
       {status === 'success' && (
         <div className={styles.success}>
@@ -577,7 +565,7 @@ export default function ContactForm() {
         disabled={status === 'loading' || !isFormValid}
         aria-busy={status === 'loading'}
       >
-        {status === 'loading' ? 'Sending...' : 'Send Message'}
+        {status === 'loading' ? submitButtonLoadingText : submitButtonText}
       </button>
 
       <p className={styles.recaptchaNotice}>

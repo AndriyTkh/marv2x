@@ -42,7 +42,8 @@
       "/products/MARV2EX_3.webp",
       "/products/zone_1_0.webp"
     ],
-    "price": ""
+    "price": "",
+    "specs": "/specs/dustmonitor_MARV2Ex2025.pdf"
   },
   {
     "id": "marv-ex-ir",
@@ -88,7 +89,8 @@
       "/products/MARVEXIR_2.webp",
       "/products/MARVEXIR_3.webp"
     ],
-    "price": ""
+    "price": "",
+    "specs": "/specs/gas_analyzer_MARVExIR2025.pdf"
   },
   {
     "id": "marv-2ex-ir",
@@ -151,7 +153,8 @@
       "/products/MARV2EXIR_3.webp",
       "/products/zone_2_2.webp"
     ],
-    "price": ""
+    "price": "",
+    "specs": "/specs/gas_analyzer_MARV2ExIR2025.pdf"
   },
   {
     "id": "marv-analyzer",
@@ -209,6 +212,7 @@
       "/products/MARV2EX_module_1.webp",
       "/products/MARV2EX_module_3.webp"
     ],
-    "price": ""
+    "price": "",
+    "specs": "/specs/analyzer_module_MARV_2026.pdf"
   }
 ]
