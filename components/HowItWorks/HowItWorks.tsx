@@ -59,13 +59,15 @@ export default function HowItWorks() {
           </div>
 
           <div className={styles.imageContainer}>
-            <Image
-              src="/products/zone_1_3.webp"
-              alt="Marvilon optical measurement system technical diagram"
-              width={600}
-              height={450}
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              src="/video/marv2ex_led_low.mp4"
               className={styles.image}
-            />
+            ></video>
           </div>
         </div>
 

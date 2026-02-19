@@ -104,7 +104,8 @@
   margin-bottom: var(--sp-5);
   border-radius: var(--radius-md);
   overflow: hidden;
-  min-width: 300px;
+  max-width: 400px;
+  margin: 0 auto;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -159,7 +160,7 @@
 
   .highlightContainer {
     display: flex;
-    gap: 16px;
+    gap: 32px;
   }
 
   .highlight {
