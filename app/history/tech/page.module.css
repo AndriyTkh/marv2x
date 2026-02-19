@@ -97,8 +97,7 @@
 .videoWrapper {
   flex: none;
   width: 100%;
-  max-width: 900px;
-  margin: var(--sp-5) auto;
+  max-width: 600px;
 }
 
 .image,

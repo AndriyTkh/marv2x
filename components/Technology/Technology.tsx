@@ -16,7 +16,7 @@ export default function Technology() {
             </p>
             <ul className={styles.features}>
               <li>
-                Integrated measurement of CO, CO₂, NO, NO₂, SO₂, NH₃, CH₄, particulate matter, and
+                Integrated measurement of CO, CO₂, NO, NO₂, NH₃, CH₄, particulate matter, and
                 moisture
               </li>
               <li>High-pressure optical cell engineered for extreme industrial conditions</li>

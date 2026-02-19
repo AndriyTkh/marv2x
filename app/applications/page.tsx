@@ -47,7 +47,7 @@ export default function ApplicationsPage() {
             </div>
             <div className={styles.imageWrapper}>
               <Image
-                src="/products/dust_monitor.webp"
+                src="/products/zone_1_2.webp"
                 alt="MARV 2Ex system overview"
                 width={800}
                 height={600}

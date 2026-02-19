@@ -4,7 +4,6 @@ export default function KeyCapabilities() {
   const measuredComponents = [
     'CO, CO₂',
     'NO, NO₂',
-    'SO₂',
     'NH₃',
     'CH₄',
     'Particulate matter (PM)',

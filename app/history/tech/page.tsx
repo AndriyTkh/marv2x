@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './page.module.css';
 import type { Metadata } from 'next';
+import ImageGallery from '@/components/ImageGallery/ImageGallery';
 
 export const metadata: Metadata = {
   title: 'Technology & Innovation',
@@ -61,12 +62,13 @@ export default function TechnologyPage() {
               </p>
             </div>
             <div className={styles.imageWrapper}>
-              <Image
-                src="/products/zone_1_2.webp"
-                alt="Marvilon optical measurement system front view"
-                width={800}
-                height={600}
-                className={styles.image}
+              <ImageGallery
+                images={[
+                  '/applications/detector_module_1.webp',
+                  '/applications/detector_module_2.webp',
+                  '/products/dust_monitor.webp',
+                ]}
+                productName={'Detection module'}
               />
             </div>
           </div>
@@ -80,7 +82,7 @@ export default function TechnologyPage() {
               <h3>1. Optical Measurement Cell</h3>
               <ul>
                 <li>
-                  <strong>Measures multiple gas species:</strong> CO, CO₂, NO, NO₂, SO₂, NH₃, CH₄
+                  <strong>Measures multiple gas species:</strong> CO, CO₂, NO, NO₂, NH₃, CH₄
                 </li>
                 <li>
                   <strong>Detects particulate matter:</strong> PM1, PM2.5, PM10
@@ -97,19 +99,14 @@ export default function TechnologyPage() {
             <div className={styles.specs}>
               <h4>Detection limits:</h4>
               <ul>
-                <li>CO: 1 ppm – 5000 ppm</li>
-                <li>CO₂: 50 ppm – 20,000 ppm</li>
-                <li>NO/NO₂: 0.5 ppm – 500 ppm</li>
-                <li>SO₂: 1 ppm – 2000 ppm</li>
-                <li>NH₃: 1 ppm – 2000 ppm</li>
-                <li>CH₄: 2 ppm – 10,000 ppm</li>
-                <li>PM: 0.1 mg/m³ – 500 mg/m³</li>
-                <li>Moisture: 0 – 100% RH</li>
+                <li>Dust (PM): up to 300 mg/m³</li>
+                <li>Moisture: up to 40%</li>
+                <li>CO: up to 70%</li>
+                <li>CO₂: up to 30%</li>
+                <li>CH₄: up to 10%</li>
+                <li>Other gases: on request</li>
               </ul>
-              <p>
-                <strong>Accuracy:</strong> ±2% of reading for gases; ±5% for particulate matter; ±3%
-                RH for moisture
-              </p>
+
               <p>Optimized optical path for high sensitivity and minimal cross-sensitivity</p>
             </div>
           </div>
@@ -117,28 +114,29 @@ export default function TechnologyPage() {
 
         {/* S-3: Video centered */}
         <section className={styles.section}>
-          <div className={styles.videoWrapper}>
-            <video controls className={styles.video}>
-              <source src="/video/TechLoop.webm" type="video/webm" />
-              Your browser does not support the video tag.
-            </video>
+          <div className={styles.horizontal}>
+            <div className={styles.videoWrapper}>
+              <video controls className={styles.video}>
+                <source src="/video/TechLoop.webm" type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div>
+              <h3>2. Automated calibration</h3>
+              <p>
+                Automated reference measurement and field calibration with the use of certified
+                optical filters scheduled from 1 hour period for 100% guarantee of true
+                measurementss
+              </p>
+            </div>
           </div>
         </section>
 
         {/* S-4: Image left, Sampling System + Embedded Control right */}
         <section className={styles.section}>
           <div className={styles.horizontal}>
-            <div className={styles.imageWrapper}>
-              <Image
-                src="/products/zone_1_0.webp"
-                alt="Marvilon 3D system render"
-                width={800}
-                height={600}
-                className={styles.image}
-              />
-            </div>
             <div className={styles.textContent}>
-              <h3>2. Sampling System</h3>
+              <h3>3. Sampling System</h3>
               <ul>
                 <li>
                   High-efficiency isokinetic probes to capture representative samples in high-dust
@@ -151,6 +149,15 @@ export default function TechnologyPage() {
                   0.5 – 2 bar
                 </li>
               </ul>
+            </div>
+            <div className={styles.imageWrapper}>
+              <Image
+                src="/products/zone_1_2.webp"
+                alt="Marvilon 3D system render"
+                width={800}
+                height={600}
+                className={styles.image}
+              />
             </div>
           </div>
         </section>
