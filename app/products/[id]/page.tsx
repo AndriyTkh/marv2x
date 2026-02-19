@@ -93,7 +93,11 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
           {/* Product Info */}
           <div className={styles.infoContainer}>
             <h1 className={styles.title}>{product.name}</h1>
-            <p className={styles.description}>{product.longDescription}</p>
+            <div className={styles.description}>
+              {product.longDescription.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
 
             {/* Price */}
             {product.price && (

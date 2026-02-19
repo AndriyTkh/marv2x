@@ -3,7 +3,11 @@
     "id": "marv-2ex",
     "name": "MARV 2EX",
     "shortDescription": "Extractive dust monitoring system for wet gases in explosive atmospheres (ATEX Zone 1/2).",
-    "longDescription": "The MARV 2EX is designed for continuous measurement of dust concentration in industrial processes saturated with moisture, such as after wet scrubbers or in condensing environments. It provides isokinetic sampling, accurate linear measurement, and constant dust level monitoring up to 0.1 mg/m³. The system features PLC and HMI visualization for easy parameterization and complies with legally regulated measuring instruments (Certificate No. UA.TR.001 46-19).",
+    "longDescription": [
+      "The MARV 2EX is designed for continuous measurement of dust concentration in industrial processes saturated with moisture, such as after wet scrubbers or in condensing environments.",
+      "It provides isokinetic sampling, accurate linear measurement, and constant dust level monitoring up to 0.1 mg/m³.",
+      "The system features PLC and HMI visualization for easy parameterization and complies with legally regulated measuring instruments (Certificate No. UA.TR.001 46-19)."
+    ],
     "features": [
       "Isokinetic sampling under variable flow conditions",
       "Constant dust level measurement up to 0.1 mg/m³",
@@ -44,7 +48,12 @@
     "id": "marv-ex-ir",
     "name": "MARV Ex IR",
     "shortDescription": "All-in-one extractive dust, moisture, and gas composition monitoring system for dry and wet industrial processes.",
-    "longDescription": "The MARV Ex IR is an all-in-one extractive, isokinetic, and temperature-controlled continuous monitoring system designed for precise measurement of dust concentration, moisture content, and gas composition in industrial stacks. It is suitable for both dry and wet processes and ensures reliable operation under harsh process and ambient conditions. The system features a heated sampling probe to vaporize moisture, an air or nitrogen-purged optical sensor module, and an integrated PLC, all housed in a weather-proof, powder-coated steel enclosure. Measurement is performed using optical forward scattering for dust detection and infrared absorption for moisture and gas composition analysis, enabling accurate and continuous emissions monitoring.",
+    "longDescription": [
+      "The MARV Ex IR is an all-in-one extractive, isokinetic, and temperature-controlled continuous monitoring system designed for precise measurement of dust concentration, moisture content, and gas composition in industrial stacks.",
+      "It is suitable for both dry and wet processes and ensures reliable operation under harsh process and ambient conditions.",
+      "The system features a heated sampling probe to vaporize moisture, an air or nitrogen-purged optical sensor module, and an integrated PLC, all housed in a weather-proof, powder-coated steel enclosure.",
+      "Measurement is performed using optical forward scattering for dust detection and infrared absorption for moisture and gas composition analysis, enabling accurate and continuous emissions monitoring."
+    ],
     "features": [
       "Simultaneous measurement of dust, moisture, and gas composition",
       "Heated sampling probe for continuous moisture vaporization",
@@ -85,7 +94,12 @@
     "id": "marv-2ex-ir",
     "name": "MARV 2Ex IR",
     "shortDescription": "All-in-one extractive dust, moisture, and gas composition monitoring system for ATEX Zone 1/2 explosive atmospheres.",
-    "longDescription": "The MARV 2Ex IR is an all-in-one extractive, isokinetic, and temperature-controlled continuous monitoring system designed for simultaneous measurement of dust concentration, moisture content, and gas composition in industrial stacks located in explosive atmospheres. Certified for ATEX Zone 1/2 applications, the system uses a nitrogen-heated sampling probe, nitrogen-purged optical sensor module, and an integrated PLC housed in a weather-proof, powder-coated steel enclosure. A protective nitrogen overpressure prevents the formation of explosive gas atmospheres inside the analyzer. Measurement is based on optical forward scattering for dust detection and infrared absorption for moisture and gas composition analysis, ensuring reliable and accurate monitoring in dry and wet process conditions.",
+    "longDescription": [
+      "The MARV 2Ex IR is an all-in-one extractive, isokinetic, and temperature-controlled continuous monitoring system designed for simultaneous measurement of dust concentration, moisture content, and gas composition in industrial stacks located in explosive atmospheres.",
+      "Certified for ATEX Zone 1/2 applications, the system uses a nitrogen-heated sampling probe, nitrogen-purged optical sensor module, and an integrated PLC housed in a weather-proof, powder-coated steel enclosure.",
+      "A protective nitrogen overpressure prevents the formation of explosive gas atmospheres inside the analyzer.",
+      "Measurement is based on optical forward scattering for dust detection and infrared absorption for moisture and gas composition analysis, ensuring reliable and accurate monitoring in dry and wet process conditions."
+    ],
     "features": [
       "ATEX-compliant design for Zone 1/2 explosive atmospheres",
       "Simultaneous measurement of dust, moisture, and gas composition",
@@ -136,6 +150,64 @@
       "/products/MARV2EXIR_2.webp",
       "/products/MARV2EXIR_3.webp",
       "/products/zone_2_2.webp"
+    ],
+    "price": ""
+  },
+  {
+    "id": "marv-analyzer",
+    "name": "MARV Analyzer",
+    "shortDescription": "All-in-one analyzer for gas, dust, and moisture measurement in dry and wet industrial processes.",
+    "longDescription": [
+      "The MARV Analyzer is a flow- and temperature-controlled system for continuous measurement of dust, moisture, and gas composition in industrial processes. It operates reliably in dry or wet conditions, including explosive atmospheres (ATEX Zone 1/2), making it ideal for steel production, emission control, and other harsh industrial environments.",
+
+      "At its core is a 3rd generation five-zone optical cell. The central zone holds undiluted sample gas, while surrounding purge zones protect optical windows from dust, moisture, and corrosive condensates. This design prevents fouling, maintains accurate measurements, and allows operation at up to 200 °C and 10 bar. Optical windows are made of durable infrared- and visible-transparent materials for chemical and thermal stability.",
+
+      "Dual-path optics enable simultaneous measurement of gas and dust. Infrared absorption analyzes gas and moisture, while visible-light forward scattering measures dust concentrations from 0.1 to 300 mg/m³. Sample gas is measured undiluted, with algorithmic compensation ensuring accurate multi-component analysis.",
+
+      "The modular design supports NDIR, TDLA, and FTIR spectroscopy, allowing flexible configuration and wide dynamic range measurement. The MARV Analyzer measures gases from ppm levels to high concentrations (e.g., CO up to 70% vol) while monitoring dust and moisture, providing a robust and precise solution for industrial process monitoring."
+    ],
+
+    "features": [
+      "Simultaneous measurement of dust, moisture, and gas composition",
+      "Dual-path optical system: IR absorption + visible light scattering",
+      "Five-zone optical cell with purge protection against contamination",
+      "Accurate measurement in undiluted gas streams",
+      "Supports NDIR, TDLA, and FTIR spectroscopy methods",
+      "Modular IR sources and detectors for flexible configuration",
+      "Wide dynamic measurement range (ppm to high % concentrations)",
+      "Operates in explosive atmospheres (ATEX Zone 1/2)",
+      "Resistant to high temperature (up to 200 °C) and pressure (up to 10 bar)",
+      "No sample conditioning required for dust measurement"
+    ],
+    "applications": [
+      {
+        "process": "BOF (Basic Oxygen Furnace)",
+        "description": "Direct measurement of CO, dust, and moisture in converter off-gas without dilution, enabling process optimization and emission control.",
+        "conditions": {
+          "temperature": "Up to 200°C",
+          "pressure": "Up to 10 bar",
+          "typicalGasComposition": {
+            "CO": "Up to 70%",
+            "CO2": "Up to 30%",
+            "Dust": "Up to 300 mg/m³"
+          }
+        }
+      },
+      {
+        "process": "Industrial gas monitoring (dry and wet processes)",
+        "description": "Continuous monitoring of gas composition, dust, and moisture in industrial plants such as agglomeration, graphite production, and emission control systems.",
+        "conditions": {
+          "temperature": "Up to 200°C",
+          "humidity": "Up to 40%",
+          "gasFlow": "5–40 l/min"
+        }
+      }
+    ],
+    "certifications": ["ATEX Zone 1/2 compliant", "EN 15267 (optional automated validation)"],
+    "imageUrls": [
+      "/products/MARV2EX_module_2.webp",
+      "/products/MARV2EX_module_1.webp",
+      "/products/MARV2EX_module_3.webp"
     ],
     "price": ""
   }
