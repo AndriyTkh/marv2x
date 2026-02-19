@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { storeSpecRequest } from '@/lib/specRequestStorage';
 
 // Initialize Resend lazily to avoid build-time errors
 function getResendClient() {
@@ -149,27 +148,6 @@ export async function POST(request: NextRequest) {
       productId,
       timestamp,
     });
-
-    // Store the spec request (requirement 9.2)
-    try {
-      await storeSpecRequest({
-        firstName,
-        lastName,
-        email,
-        company,
-        country,
-        phone: phone || '',
-        productId,
-        timestamp,
-      });
-    } catch (storageError) {
-      console.error('Failed to store spec request:', storageError);
-      // Return error response (requirement 9.5)
-      return NextResponse.json(
-        { error: 'Failed to save your request. Please try again.' },
-        { status: 500 },
-      );
-    }
 
     // Format submission date
     const submissionDate = new Date().toLocaleString('en-US', {
